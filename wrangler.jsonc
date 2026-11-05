@@ -1,9 +1,8 @@
+
 {
   "name": "snowy-pine-a577",
   "compatibility_date": "2026-11-03",
   "assets": {
-    "directory": ".",
-    "binding": "ASSETS",
-    "not_found_handling": "404-page"
+    "directory": "."
   }
 }
