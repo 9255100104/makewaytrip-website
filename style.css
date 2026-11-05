@@ -5,3 +5,11 @@
 @media(max-width:600px){.menu-btn{display:block}nav{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:20px 6%;flex-direction:column;align-items:flex-start;box-shadow:0 12px 20px #0001}nav.open{display:flex}.hero{height:560px}.hero h1{font-size:50px}.hero-note{left:7%;right:auto;font-size:8px}.search-strip{padding:18px 6%}.section h2,.group-section h2{font-size:34px}.stay-grid{grid-template-columns:1fr}.stay-card img{height:230px}.package-band{grid-template-columns:1fr}.package-band>div:first-child{padding:58px 8%}.package-photo{min-height:260px}.booking-form{grid-template-columns:1fr}.booking-form label,.booking-form .full{grid-column:1}.contact-line{flex-direction:column;gap:12px}footer{flex-wrap:wrap;padding:24px 6%}}
 
 .quick-actions{display:flex;gap:10px;margin-top:12px}.quick-actions a{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;padding:10px 12px;font-size:10px;font-weight:700;border-radius:2px}.quick-actions a+ a{background:#e8f0eb;color:var(--green)}
+
+
+/* Updated photo gallery and accessibility */
+.photo-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.photo-gallery img{width:100%;height:150px;object-fit:cover;border-radius:3px;display:block}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.stay-card img{background:var(--cream)}
+@media(max-width:600px){.photo-gallery{grid-template-columns:repeat(2,1fr)}.photo-gallery img{height:135px}}
