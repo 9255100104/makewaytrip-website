@@ -1,16 +1,9 @@
-MAKEWAY TRIP WEBSITE — UPDATED PACKAGE
+MAKEWAY TRIP WEBSITE – UPDATED FILES
 
-Files:
-- index.html: website structure and property listings
-- style.css: responsive styling
-- app.js: Hindi/English toggle, mobile menu, WhatsApp enquiry form
-- admin.html: existing admin landing page
-- images/: property photos
+IMPORTANT:
+- Keep index.html, style.css, app.js, admin.html and all hotel image files in the GitHub repository root (same level).
+- The updated index.html now references the image files by their root-level names, matching the files currently uploaded to your GitHub repository.
+- Upload/replace the updated files to GitHub main branch. Do not upload this ZIP file itself as a website asset.
+- After GitHub is updated, check the Cloudflare deployment/source settings and deploy the latest repository files.
 
-Photo notes:
-- Original Kothi Paradise and Krishna Apartment images were retained from the supplied website ZIP.
-- Original Snow Range and Hotel Sanjivani photos were added from the supplied hotel ZIP files.
-- The Lost Escape and Hotel Barbarik still use the existing placeholder images because original photos for those two properties were not included in the ZIPs used for this update.
-
-Deployment:
-Upload/replace these website files and the images folder in the website project. Keep the folder structure unchanged. Test the website and WhatsApp enquiry form after deployment.
+Some listings (The Lost Escape and Hotel Barbarik) still use temporary external photos because their original property photos were not included in the available uploaded website photo files.
