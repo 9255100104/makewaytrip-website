@@ -1,10 +1,25 @@
 {
   "name": "snowy-pine-a577",
+  "main": "worker.js",
   "compatibility_date": "2026-11-03",
   "assets": {
     "directory": ".",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+    "exclude": [
+      "worker.js",
+      "wrangler.jsonc",
+      "*.zip",
+      "README*",
+      ".git/**"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "makewaytrip-db",
+      "database_id": "625cd508-b30d-452f-8597-2ba59108eec9"
+    }
+  ]
 }
- 
-
