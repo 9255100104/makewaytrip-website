@@ -24,6 +24,8 @@ if (bookingForm) {
       `Message: ${enquiry.message || 'Not specified'}`
     ].join('\n');
 
+    const whatsappWindow = window.open('about:blank', '_blank');
+
     try {
       const result = await fetch('/api/enquiries', {
         method: 'POST',
@@ -32,7 +34,7 @@ if (bookingForm) {
       });
 
       if (!result.ok) {
-        alert('Enquiry save nahi ho payi. Please WhatsApp se enquiry bhejein.');
+        alert('Enquiry save nahi ho payi. WhatsApp se enquiry bhejein.');
       }
     } catch (error) {
       console.error('Enquiry save error:', error);
@@ -42,6 +44,10 @@ if (bookingForm) {
     const whatsappUrl =
       `https://wa.me/919255100104?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (whatsappWindow) {
+      whatsappWindow.location.href = whatsappUrl;
+    } else {
+      window.location.href = whatsappUrl;
+    }
   });
 }
