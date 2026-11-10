@@ -156,12 +156,34 @@ console.log('Loaded properties:', properties);
   ? `<img class="property-main-image" src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
   : '';
 
-const isKothi = property.name
-  .toLowerCase()
-  .includes('kothi paradise');
+const propertyName = property.name.toLowerCase();
 
-const roomGallery = isKothi ? `
-  <h4>Hotel Kothi Paradise – Room Gallery</h4>
+const isKothi = propertyName.includes('kothi paradise');
+const isSnowRange = propertyName.includes('snow range');
+
+let roomGallery = '';
+
+if (isKothi) {
+  roomGallery = `
+    <h4>Hotel Kothi Paradise – Room Gallery</h4>
+    <div class="photo-gallery">
+      <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
+      <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
+      <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
+      <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
+    </div>
+  `;
+}
+
+if (isSnowRange) {
+  roomGallery = `
+    <h4>Hotel Snow Range – Photo Gallery</h4>
+    <div class="photo-gallery">
+      <img src="snow-range-view.jpeg" alt="Snow Range mountain view" loading="lazy">
+      <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
+    </div>
+  `;
+}
   <div class="photo-gallery" aria-label="Kothi Paradise room photos">
     <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
     <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
