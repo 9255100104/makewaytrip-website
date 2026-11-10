@@ -4,25 +4,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Makeway Trip Admin</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Makeway Trip Admin Dashboard</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #172033;
+    }
+    .wrap { max-width: 1100px; margin: auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    h1 { margin: 0; }
+    h2 { margin-top: 0; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 5px 22px rgba(0,0,0,.05);
+      overflow-x: auto;
+    }
+    button, select, input, textarea {
+      font: inherit;
+      padding: 10px;
+      border: 1px solid #ccd3df;
+      border-radius: 7px;
+    }
+    button {
+      background: #174ea6;
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
+    button.danger { background: #b42318; }
+    button:disabled { opacity: .6; cursor: wait; }
+    input, textarea { width: 100%; margin: 6px 0 14px; }
+    label { font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid #e5eaf0;
+      vertical-align: top;
+    }
+    th { background: #f8fafc; }
+    .muted { color: #667085; }
+    #notice { margin: 12px 0; color: #b42318; }
+    .top-links { margin-bottom: 20px; }
+    .top-links a { color: #174ea6; text-decoration: none; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+  </style>
 </head>
 <body>
-  <main class="admin-wrap">
-    <section class="admin-card">
-      <a href="index.html">← Back to website</a>
-      <p class="eyebrow">MAKEWAY TRIP · ADMIN</p>
-      <h1>Admin Dashboard</h1>
-      <p>Welcome, Dinesh!</p>
+  <main class="wrap">
+    <div class="top-links">
+      <a href="/">← Back to website</a>
+    </div>
 
-      <div class="notice">
-        <b>Secure Admin Setup Pending</b>
-        <p>Admin login will be activated after Cloudflare Access,
-        Worker API and database configuration.</p>
-        <p>Authorised email: makewaytrip82@gmail.com</p>
-        <p>Do not enter your password on this demo page.</p>
+    <header>
+      <div>
+        <p class="muted">MAKEWAY TRIP · ADMIN</p>
+        <h1>Admin Dashboard</h1>
       </div>
+      <button id="logoutButton" type="button">Logout</button>
+    </header>
+
+    <p id="notice" role="status" aria-live="polite"></p>
+
+    <section class="card">
+      <h2>Customer Enquiries</h2>
+      <p class="muted">View enquiries and update their status.</p>
+      <div id="enquiries">Loading enquiries...</div>
+    </section>
+
+    <section class="card">
+      <h2>Properties</h2>
+      <p class="muted">Add a property to your database.</p>
+
+      <form id="propertyForm">
+        <div class="form-grid">
+          <div>
+            <label for="propertyName">Property name *</label>
+            <input id="propertyName" required maxlength="200">
+          </div>
+          <div>
+            <label for="propertyLocation">Location</label>
+            <input id="propertyLocation" maxlength="200">
+          </div>
+          <div>
+            <label for="propertyPrice">Price</label>
+            <input id="propertyPrice" maxlength="100">
+          </div>
+          <div>
+            <label for="propertyImage">Image URL</label>
+            <input id="propertyImage" type="url" maxlength="1000">
+          </div>
+        </div>
+        <label for="propertyDescription">Description</label>
+        <textarea id="propertyDescription" rows="3" maxlength="2000"></textarea>
+        <button id="addPropertyButton" type="submit">Add Property</button>
+      </form>
+
+      <h2 style="margin-top:28px">Saved Properties</h2>
+      <div id="properties">Loading properties...</div>
     </section>
   </main>
+
+  <script>
+    const notice = document.getElementById("notice");
+
+    async function api(path, options = {}) {
+      const response = await fetch(path, {
+        credentials: "same-origin",
+        cache: "no-store",
+        ...options,
+        headers: {
+          ...(options.headers || {})
+        }
+      });
+
+      if (response.status === 401) {
+        window.location.replace("/admin-login.html");
+        throw new Error("Please login again.");
+      }
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "Request failed.");
+      }
+
+      return data;
+    }
+
+    function makeCell(row, value) {
+      const cell = document.createElement("td");
+      cell.textContent = value == null ? "" : String(value);
+      row.appendChild(cell);
+      return cell;
+    }
+
+    async function loadEnquiries() {
+      const container = document.getElementById("enquiries");
+      container.textContent = "Loading...";
+
+      const data = await api("/api/admin/enquiries");
+      const items = data.enquiries || [];
+
+      if (!items.length) {
+        container.textContent = "No enquiries received yet.";
+        return;
+      }
+
+      const table = document.createElement("table");
+      const head = document.createElement("tr");
+
+      ["Date", "Customer", "Phone", "Property", "Check-in", "Guests", "Message", "Status"]
+        .forEach(label => {
+          const th = document.createElement("th");
+          th.textContent = label;
+          head.appendChild(th);
+        });
+
+      const thead = document.createElement("thead");
+      thead.appendChild(head);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      for (const item of items) {
+        const row = document.createElement("tr");
+        makeCell(row, item.created_at);
+        makeCell(row, item.customer_name);
+        makeCell(row, item.phone);
+        makeCell(row, item.property);
+        makeCell(row, item.check_in);
+        makeCell(row, item.guests);
+        makeCell(row, item.message);
+
+        const cell = document.createElement("td");
+        const select = document.createElement("select");
+
+        ["New", "Contacted", "Confirmed", "Closed"].forEach(status => {
+          const option = document.createElement("option");
+          option.value = status;
+          option.textContent = status;
+          select.appendChild(option);
+        });
+
+        select.value = item.status || "New";
+
+        select.addEventListener("change", async () => {
+          select.disabled = true;
+          try {
+            await api(`/api/admin/enquiries/${encodeURIComponent(item.id)}`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ status: select.value })
+            });
+            notice.textContent = "Enquiry status updated.";
+          } catch (error) {
+            notice.textContent = error.message;
+            select.value = item.status || "New";
+          } finally {
+            select.disabled = false;
+          }
+        });
+
+        cell.appendChild(select);
+        row.appendChild(cell);
+        tbody.appendChild(row);
+      }
+
+      table.appendChild(tbody);
+      container.replaceChildren(table);
+    }
+
+    async function loadProperties() {
+      const container = document.getElementById("properties");
+      container.textContent = "Loading...";
+
+      const data = await api("/api/admin/properties");
+      const items = data.properties || [];
+
+      if (!items.length) {
+        container.textContent = "No properties added yet.";
+        return;
+      }
+
+      const table = document.createElement("table");
+      const head = document.createElement("tr");
+
+      ["Name", "Location", "Price", "Active", "Action"].forEach(label => {
+        const th = document.createElement("th");
+        th.textContent = label;
+        head.appendChild(th);
+      });
+
+      const thead = document.createElement("thead");
+      thead.appendChild(head);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      for (const item of items) {
+        const row = document.createElement("tr");
+        makeCell(row, item.name);
+        makeCell(row, item.location);
+        makeCell(row, item.price);
+        makeCell(row, Number(item.active) === 1 ? "Yes" : "No");
+
+        const cell = document.createElement("td");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "danger";
+
+        deleteButton.addEventListener("click", async () => {
+          if (!confirm(`Delete ${item.name}?`)) return;
+
+          deleteButton.disabled = true;
+          try {
+            await api(`/api/admin/properties/${encodeURIComponent(item.id)}`, {
+              method: "DELETE"
+            });
+            notice.textContent = "Property deleted.";
+            await loadProperties();
+          } catch (error) {
+            notice.textContent = error.message;
+            deleteButton.disabled = false;
+          }
+        });
+
+        cell.appendChild(deleteButton);
+        row.appendChild(cell);
+        tbody.appendChild(row);
+      }
+
+      table.appendChild(tbody);
+      container.replaceChildren(table);
+    }
+
+    document.getElementById("propertyForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      const button = document.getElementById("addPropertyButton");
+      button.disabled = true;
+      notice.textContent = "";
+
+      const property = {
+        name: document.getElementById("propertyName").value.trim(),
+        location: document.getElementById("propertyLocation").value.trim(),
+        price: document.getElementById("propertyPrice").value.trim(),
+        image_url: document.getElementById("propertyImage").value.trim(),
+        description: document.getElementById("propertyDescription").value.trim(),
+        active: 1
+      };
+
+      try {
+        await api("/api/admin/properties", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(property)
+        });
+
+        event.target.reset();
+        notice.textContent = "Property added successfully.";
+        await loadProperties();
+      } catch (error) {
+        notice.textContent = error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", async () => {
+      try {
+        await api("/api/admin/logout", { method: "POST" });
+      } catch (error) {
+        notice.textContent = error.message;
+      }
+      window.location.replace("/admin-login.html");
+    });
+
+    async function startDashboard() {
+      try {
+        const session = await api("/api/admin/session");
+        if (!session.authenticated) {
+          window.location.replace("/admin-login.html");
+          return;
+        }
+
+        await Promise.all([loadEnquiries(), loadProperties()]);
+      } catch (error) {
+        notice.textContent = error.message;
+      }
+    }
+
+    startDashboard();
+  </script>
 </body>
 </html>
