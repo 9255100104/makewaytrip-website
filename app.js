@@ -120,7 +120,7 @@ async function loadDynamicProperties() {
 
     const data = await response.json();
     const properties = data.properties || [];
-
+console.log('Loaded properties:', properties);
     properties.forEach((property) => {
 
       // Add property to booking dropdown
