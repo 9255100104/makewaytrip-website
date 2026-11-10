@@ -152,23 +152,10 @@ async function loadDynamicProperties() {
         const card = document.createElement('article');
         card.className = 'stay-card';
 
-        const image = property.image_url const isKothi = property.name
-  .toLowerCase()
-  .includes('kothi paradise');
+       const image = property.image_url
+  ? `<img src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
+  : '';
 
-const roomGallery = isKothi ? `
-  <h4>Hotel Kothi Paradise – Room Gallery</h4>
-  <div class="photo-gallery" aria-label="Kothi Paradise room photos">
-    <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
-  </div>
-` : '';
-          ? `<img src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
-          : '';
-
-        card.innerHTML = `
           ${image}
           <div class="card-body">
             <span class="location">${escapePropertyText(property.location || '')}</span>
