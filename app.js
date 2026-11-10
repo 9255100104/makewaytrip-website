@@ -152,23 +152,39 @@ async function loadDynamicProperties() {
         const card = document.createElement('article');
         card.className = 'stay-card';
 
-       const image = property.image_url
+      const image = property.image_url
   ? `<img src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
   : '';
 
-          ${image}
-          <div class="card-body">
-            <span class="location">${escapePropertyText(property.location || '')}</span>
-            <h3>${escapePropertyText(property.name)}</h3>
-            <p>${escapePropertyText(property.description || '')}</p>
-            <div class="card-bottom">
-              <span class="price">${escapePropertyText((property.price || 'Ask for rates').replace(/^price\s*:\s*/i, '').trim())}</span>
-              <a href="#contact" class="text-link">Enquire →</a>
-            </div>
-          </div>
-        `;
+const isKothi = property.name
+  .toLowerCase()
+  .includes('kothi paradise');
 
-        stayGrid.prepend(card);
+const roomGallery = isKothi ? `
+  <h4>Hotel Kothi Paradise – Room Gallery</h4>
+  <div class="photo-gallery" aria-label="Kothi Paradise room photos">
+    <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
+    <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
+    <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
+    <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
+  </div>
+` : '';
+
+card.innerHTML = `
+  ${image}
+  <div class="card-body">
+    <span class="location">${escapePropertyText(property.location || '')}</span>
+    <h3>${escapePropertyText(property.name)}</h3>
+    <p>${escapePropertyText(property.description || '')}</p>
+    <div class="card-bottom">
+      <span class="price">${escapePropertyText((property.price || 'Ask for rates').replace(/^price\s*:\s*/i, '').trim())}</span>
+      <a href="#contact" class="text-link">Enquire →</a>
+    </div>
+    ${roomGallery}
+  </div>
+`;
+
+stayGrid.prepend(card);
       }
     });
 
