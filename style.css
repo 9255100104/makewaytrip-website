@@ -13,3 +13,8 @@
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .stay-card img{background:var(--cream)}
 @media(max-width:600px){.photo-gallery{grid-template-columns:repeat(2,1fr)}.photo-gallery img{height:135px}}
+/* Show full Kothi Paradise photo */
+.stay-card img[alt*="Kothi Paradise"] {
+  object-fit: contain;
+  background: #f5f4ef;
+}
