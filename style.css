@@ -38,3 +38,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     height: 180px;
   }
 }
+@media (max-width: 600px) {
+  .stay-card .photo-gallery img {
+    height: 180px;
+  }
+}
