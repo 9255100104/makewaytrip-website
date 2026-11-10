@@ -49,3 +49,25 @@ function escapePropertyText(value) {
 }
 
 loadDynamicProperties();
+const properties = data.properties || [];
+    // Add database properties to booking form dropdown
+    const propertySelect = document.querySelector('select[name="property"]');
+
+    if (propertySelect) {
+      properties.forEach((property) => {
+        const label = property.location
+          ? `${property.name} – ${property.location}`
+          : property.name;
+
+        const exists = Array.from(propertySelect.options).some(
+          option => option.textContent.trim().toLowerCase() === label.toLowerCase()
+        );
+
+        if (!exists) {
+          const option = document.createElement('option');
+          option.value = label;
+          option.textContent = label;
+          propertySelect.insertBefore(option, propertySelect.lastElementChild);
+        }
+      });
+    }
