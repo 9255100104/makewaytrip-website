@@ -153,7 +153,7 @@ console.log('Loaded properties:', properties);
         card.className = 'stay-card';
 
       const image = property.image_url
-  ? `<img src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
+  ? `<img class="property-main-image" src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
   : '';
 
 const isKothi = property.name
