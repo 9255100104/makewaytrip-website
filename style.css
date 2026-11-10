@@ -43,3 +43,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     height: 180px;
   }
 }
+/* Hotel Kothi Paradise main photo - bigger */
+.stay-card img[alt*="Kothi Paradise"] {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .stay-card img[alt*="Kothi Paradise"] {
+    height: 250px;
+  }
+}
