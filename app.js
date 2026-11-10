@@ -6,7 +6,6 @@ const bookingForm = document.getElementById('bookingForm');
 
 let currentLang = 'en';
 
-// Language switch
 function setLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
@@ -75,7 +74,6 @@ if (bookingForm) {
       `Message: ${enquiry.message || 'Not specified'}`
     ].join('\n');
 
-    // Open a window immediately to avoid popup blocking
     const whatsappWindow = window.open('about:blank', '_blank');
 
     try {
@@ -106,7 +104,7 @@ if (bookingForm) {
   });
 }
 
-// Load properties added from Admin Dashboard
+// Load properties from Admin Dashboard
 async function loadDynamicProperties() {
   const stayGrid = document.querySelector('.stay-grid');
   const propertySelect = document.querySelector('select[name="property"]');
@@ -120,10 +118,12 @@ async function loadDynamicProperties() {
 
     const data = await response.json();
     const properties = data.properties || [];
-console.log('Loaded properties:', properties);
+
+    console.log('Loaded properties:', properties);
+
     properties.forEach((property) => {
 
-      // Add property to booking dropdown
+      // Booking dropdown
       if (propertySelect) {
         const label = property.location
           ? `${property.name} – ${property.location}`
@@ -147,66 +147,58 @@ console.log('Loaded properties:', properties);
         }
       }
 
-      // Add property card to website
+      // Property card
       if (stayGrid) {
         const card = document.createElement('article');
         card.className = 'stay-card';
 
-      const image = property.image_url
-  ? `<img class="property-main-image" src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
-  : '';
+        const image = property.image_url
+          ? `<img class="property-main-image" src="${escapePropertyText(property.image_url)}" alt="${escapePropertyText(property.name)}">`
+          : '';
 
-const propertyName = property.name.toLowerCase();
+        const propertyName = property.name.toLowerCase();
 
-const isKothi = propertyName.includes('kothi paradise');
-const isSnowRange = propertyName.includes('snow range');
+        let roomGallery = '';
 
-let roomGallery = '';
+        // Kothi Paradise photos
+        if (propertyName.includes('kothi paradise')) {
+          roomGallery = `
+            <h4>Hotel Kothi Paradise – Room Gallery</h4>
+            <div class="photo-gallery">
+              <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
+              <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
+              <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
+              <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
+            </div>
+          `;
+        }
 
-if (isKothi) {
-  roomGallery = `
-    <h4>Hotel Kothi Paradise – Room Gallery</h4>
-    <div class="photo-gallery">
-      <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
-      <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
-      <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
-      <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
-    </div>
-  `;
-}
+        // Snow Range photos
+        else if (propertyName.includes('snow range')) {
+          roomGallery = `
+            <h4>Hotel Snow Range – Photo Gallery</h4>
+            <div class="photo-gallery">
+              <img src="snow-range-view.jpeg" alt="Snow Range mountain view" loading="lazy">
+              <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
+            </div>
+          `;
+        }
 
-if (isSnowRange) {
-  roomGallery = `
-    <h4>Hotel Snow Range – Photo Gallery</h4>
-    <div class="photo-gallery">
-      <img src="snow-range-view.jpeg" alt="Snow Range mountain view" loading="lazy">
-      <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
-    </div>
-  `;
-}
-  <div class="photo-gallery" aria-label="Kothi Paradise room photos">
-    <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
-    <img src="ROOM%20PIC%20KHOTI.jpeg" alt="Kothi Paradise room 4" loading="lazy">
-  </div>
-` : '';
+        card.innerHTML = `
+          ${image}
+          <div class="card-body">
+            <span class="location">${escapePropertyText(property.location || '')}</span>
+            <h3>${escapePropertyText(property.name)}</h3>
+            <p>${escapePropertyText(property.description || '')}</p>
+            <div class="card-bottom">
+              <span class="price">${escapePropertyText((property.price || 'Ask for rates').replace(/^price\s*:\s*/i, '').trim())}</span>
+              <a href="#contact" class="text-link">Enquire →</a>
+            </div>
+            ${roomGallery}
+          </div>
+        `;
 
-card.innerHTML = `
-  ${image}
-  <div class="card-body">
-    <span class="location">${escapePropertyText(property.location || '')}</span>
-    <h3>${escapePropertyText(property.name)}</h3>
-    <p>${escapePropertyText(property.description || '')}</p>
-    <div class="card-bottom">
-      <span class="price">${escapePropertyText((property.price || 'Ask for rates').replace(/^price\s*:\s*/i, '').trim())}</span>
-      <a href="#contact" class="text-link">Enquire →</a>
-    </div>
-    ${roomGallery}
-  </div>
-`;
-
-stayGrid.prepend(card);
+        stayGrid.prepend(card);
       }
     });
 
