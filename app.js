@@ -163,7 +163,7 @@ async function loadDynamicProperties() {
             <h3>${escapePropertyText(property.name)}</h3>
             <p>${escapePropertyText(property.description || '')}</p>
             <div class="card-bottom">
-              <span class="price">${escapePropertyText(property.price || 'Ask for rates')}</span>
+              <span class="price">${escapePropertyText((property.price || 'Ask for rates').replace(/^price\s*:\s*/i, '').trim())}</span>
               <a href="#contact" class="text-link">Enquire →</a>
             </div>
           </div>
