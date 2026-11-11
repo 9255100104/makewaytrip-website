@@ -220,3 +220,5 @@ function escapePropertyText(value) {
 
 // Run property loader
 loadDynamicProperties();
+<img src="snow-range-balcony-view.jpeg" alt="Snow Range balcony mountain view" loading="lazy">
+<img src="snow-range-balcony-2.jpeg" alt="Snow Range balcony view 2" loading="lazy">
