@@ -146,6 +146,7 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
       roomGallery = `
         <h4>Hotel Kothi Paradise – Room Gallery</h4>
         <div class="photo-gallery">
+          <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise exterior" loading="lazy">
           <img src="ROOM%20PIC%20KHOTHI%201.jpeg" alt="Kothi Paradise room 1" loading="lazy">
           <img src="ROOM%20PIC%20KHOTHI%203.jpeg" alt="Kothi Paradise room 2" loading="lazy">
           <img src="ROOM%20PIC%20KHOTHI.jpeg" alt="Kothi Paradise room 3" loading="lazy">
@@ -158,28 +159,34 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
       roomGallery = `
         <h4>Hotel Snow Range – Photo Gallery</h4>
         <div class="photo-gallery">
+          <img src="snow-range-manali.jpeg" alt="Snow Range Manali" loading="lazy">
           <img src="snow-range-view.jpeg" alt="Snow Range mountain view" loading="lazy">
-          <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
+          <img src="snow-range-view-2.jpeg" alt="Snow Range view 2" loading="lazy">
           <img src="snow-range-balcony-view.jpeg" alt="Snow Range balcony mountain view" loading="lazy">
           <img src="snow-range-balcony-2.jpeg" alt="Snow Range balcony view 2" loading="lazy">
+          <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
+          <img src="snow-range-room-2.jpeg" alt="Snow Range room 2" loading="lazy">
+          <img src="snow-range-room-3.jpeg" alt="Snow Range room 3" loading="lazy">
         </div>
       `;
     }
-    // The Lost Escape (Jibhi) photos
+    // The Lost Escape (Jibhi) photos (Exact uploaded filenames)
     else if (propertyName.includes('lost escape')) {
       roomGallery = `
         <h4>The Lost Escape – Photo Gallery</h4>
         <div class="photo-gallery">
-          <img src="jibhi-1.jpg" alt="The Lost Escape river valley view" loading="lazy">
-          <img src="jibhi-2.jpg" alt="The Lost Escape bridge and mountain view" loading="lazy">
-          <img src="jibhi-3.jpg" alt="The Lost Escape riverside garden" loading="lazy">
-          <img src="jibhi-4.jpg" alt="The Lost Escape wooden attic room" loading="lazy">
-          <img src="jibhi-5.jpg" alt="The Lost Escape cozy wooden interior" loading="lazy">
-          <img src="jibhi-6.jpg" alt="The Lost Escape cottage exterior" loading="lazy">
-          <img src="jibhi-7.jpg" alt="The Lost Escape sunny bedroom" loading="lazy">
-          <img src="jibhi-8.jpg" alt="The Lost Escape duplex room with stairs" loading="lazy">
-          <img src="jibhi-9.jpg" alt="The Lost Escape panoramic windows" loading="lazy">
-          <img src="jibhi-10.jpg" alt="The Lost Escape room view" loading="lazy">
+          <img src="IMG-20261102-WA0001.jpg" alt="The Lost Escape view 1" loading="lazy">
+          <img src="IMG-20261102-WA0002.jpg" alt="The Lost Escape view 2" loading="lazy">
+          <img src="IMG-20261102-WA0003.jpg" alt="The Lost Escape view 3" loading="lazy">
+          <img src="IMG-20261102-WA0004.jpg" alt="The Lost Escape view 4" loading="lazy">
+          <img src="IMG-20261102-WA0005.jpg" alt="The Lost Escape view 5" loading="lazy">
+          <img src="IMG-20261102-WA0006.jpg" alt="The Lost Escape view 6" loading="lazy">
+          <img src="IMG-20261102-WA0007.jpg" alt="The Lost Escape view 7" loading="lazy">
+          <img src="IMG-20261102-WA0008.jpg" alt="The Lost Escape view 8" loading="lazy">
+          <img src="IMG-20261102-WA0009.jpg" alt="The Lost Escape view 9" loading="lazy">
+          <img src="IMG-20261102-WA0010.jpg" alt="The Lost Escape view 10" loading="lazy">
+          <img src="IMG-20261102-WA0011.jpg" alt="The Lost Escape view 11" loading="lazy">
+          <img src="IMG-20261102-WA0012.jpg" alt="The Lost Escape view 12" loading="lazy">
         </div>
       `;
     }
@@ -218,21 +225,21 @@ async function loadDynamicProperties() {
       location: 'JIBHI · VILLAGE DALICHA',
       description: 'Village Dalicha, Kotla Dhar, Jibhi. Stay only; meals not included.',
       price: '₹2,800 / room · stay only',
-      image_url: 'jibhi-1.jpg'
+      image_url: 'IMG-20261102-WA0001.jpg'
     },
     {
       name: 'Snow Range',
       location: 'MANALI · BURWA VALLEY',
       description: 'A peaceful stay in Burwa Valley, Manali.',
       price: 'Ask for rates',
-      image_url: 'snow-range-view.jpeg'
+      image_url: 'snow-range-manali.jpeg'
     },
     {
       name: 'Hotel Kothi Paradise',
       location: 'MANALI · ROHTANG ROAD',
       description: 'A mountain stay on Rohtang Road, Manali.',
       price: 'Ask for rates',
-      image_url: 'ROOM%20PIC%20KHOTHI%201.jpeg'
+      image_url: 'kothi-paradise.jpg'
     }
   ];
 
