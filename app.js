@@ -1,4 +1,3 @@
-
 // Website elements
 const langBtn = document.getElementById('langBtn');
 const nav = document.getElementById('nav');
@@ -89,8 +88,7 @@ if (bookingForm) {
       console.error('Enquiry save error:', error);
     }
 
-    const whatsappUrl =
-      `https://wa.me{encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me{encodeURIComponent(message)}`;
 
     if (whatsappWindow) {
       whatsappWindow.location.href = whatsappUrl;
@@ -172,9 +170,16 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
       roomGallery = `
         <h4>The Lost Escape – Photo Gallery</h4>
         <div class="photo-gallery">
-          <img src="the-lost-escape-room.jpeg" alt="The Lost Escape guest room" loading="lazy">
-          <img src="the-lost-escape-view.jpeg" alt="The Lost Escape mountain view" loading="lazy">
-          <img src="the-lost-escape-exterior.jpeg" alt="The Lost Escape exterior" loading="lazy">
+          <img src="jibhi-1.jpg" alt="The Lost Escape river valley view" loading="lazy">
+          <img src="jibhi-2.jpg" alt="The Lost Escape bridge and mountain view" loading="lazy">
+          <img src="jibhi-3.jpg" alt="The Lost Escape riverside garden" loading="lazy">
+          <img src="jibhi-4.jpg" alt="The Lost Escape wooden attic room" loading="lazy">
+          <img src="jibhi-5.jpg" alt="The Lost Escape cozy wooden interior" loading="lazy">
+          <img src="jibhi-6.jpg" alt="The Lost Escape cottage exterior" loading="lazy">
+          <img src="jibhi-7.jpg" alt="The Lost Escape sunny bedroom" loading="lazy">
+          <img src="jibhi-8.jpg" alt="The Lost Escape duplex room with stairs" loading="lazy">
+          <img src="jibhi-9.jpg" alt="The Lost Escape panoramic windows" loading="lazy">
+          <img src="jibhi-10.jpg" alt="The Lost Escape room view" loading="lazy">
         </div>
       `;
     }
@@ -213,7 +218,7 @@ async function loadDynamicProperties() {
       location: 'JIBHI · VILLAGE DALICHA',
       description: 'Village Dalicha, Kotla Dhar, Jibhi. Stay only; meals not included.',
       price: '₹2,800 / room · stay only',
-      image_url: 'the-lost-escape-front.jpeg'
+      image_url: 'jibhi-1.jpg'
     },
     {
       name: 'Snow Range',
@@ -250,23 +255,4 @@ async function loadDynamicProperties() {
 }
 
 // Run property loader
-loadDynamicProperties();    // The Lost Escape (Jibhi) photos
-    else if (propertyName.includes('lost escape')) {
-      roomGallery = `
-        <h4>The Lost Escape – Photo Gallery</h4>
-        <div class="photo-gallery">
-          <img src="jibhi-1.jpg" alt="The Lost Escape river valley view" loading="lazy">
-          <img src="jibhi-2.jpg" alt="The Lost Escape bridge and mountain view" loading="lazy">
-          <img src="jibhi-3.jpg" alt="The Lost Escape riverside garden" loading="lazy">
-          <img src="jibhi-4.jpg" alt="The Lost Escape wooden attic room" loading="lazy">
-          <img src="jibhi-5.jpg" alt="The Lost Escape cozy wooden interior" loading="lazy">
-          <img src="jibhi-6.jpg" alt="The Lost Escape cottage exterior" loading="lazy">
-          <img src="jibhi-7.jpg" alt="The Lost Escape sunny bedroom" loading="lazy">
-          <img src="jibhi-8.jpg" alt="The Lost Escape duplex room with stairs" loading="lazy">
-          <img src="jibhi-9.jpg" alt="The Lost Escape panoramic windows" loading="lazy">
-          <img src="jibhi-10.jpg" alt="The Lost Escape room view" loading="lazy">
-        </div>
-      `;
-    }
-
-
+loadDynamicProperties();
