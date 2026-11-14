@@ -1,3 +1,4 @@
+
 // Website elements
 const langBtn = document.getElementById('langBtn');
 const nav = document.getElementById('nav');
