@@ -250,4 +250,23 @@ async function loadDynamicProperties() {
 }
 
 // Run property loader
-loadDynamicProperties();
+loadDynamicProperties();    // The Lost Escape (Jibhi) photos
+    else if (propertyName.includes('lost escape')) {
+      roomGallery = `
+        <h4>The Lost Escape – Photo Gallery</h4>
+        <div class="photo-gallery">
+          <img src="jibhi-1.jpg" alt="The Lost Escape river valley view" loading="lazy">
+          <img src="jibhi-2.jpg" alt="The Lost Escape bridge and mountain view" loading="lazy">
+          <img src="jibhi-3.jpg" alt="The Lost Escape riverside garden" loading="lazy">
+          <img src="jibhi-4.jpg" alt="The Lost Escape wooden attic room" loading="lazy">
+          <img src="jibhi-5.jpg" alt="The Lost Escape cozy wooden interior" loading="lazy">
+          <img src="jibhi-6.jpg" alt="The Lost Escape cottage exterior" loading="lazy">
+          <img src="jibhi-7.jpg" alt="The Lost Escape sunny bedroom" loading="lazy">
+          <img src="jibhi-8.jpg" alt="The Lost Escape duplex room with stairs" loading="lazy">
+          <img src="jibhi-9.jpg" alt="The Lost Escape panoramic windows" loading="lazy">
+          <img src="jibhi-10.jpg" alt="The Lost Escape room view" loading="lazy">
+        </div>
+      `;
+    }
+
+
