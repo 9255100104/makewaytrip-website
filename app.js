@@ -1,4 +1,3 @@
-
 // Website elements
 const langBtn = document.getElementById('langBtn');
 const nav = document.getElementById('nav');
@@ -90,7 +89,7 @@ if (bookingForm) {
     }
 
     const whatsappUrl =
-      `https://wa.me/919255100104?text=${encodeURIComponent(message)}`;
+      `https://wa.me{encodeURIComponent(message)}`;
 
     if (whatsappWindow) {
       whatsappWindow.location.href = whatsappUrl;
@@ -155,7 +154,7 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
         </div>
       `;
     }
-    // Snow Range photos (including balcony views)
+    // Snow Range photos
     else if (propertyName.includes('snow range')) {
       roomGallery = `
         <h4>Hotel Snow Range – Photo Gallery</h4>
@@ -164,6 +163,17 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
           <img src="snow-range-room.jpeg" alt="Snow Range room" loading="lazy">
           <img src="snow-range-balcony-view.jpeg" alt="Snow Range balcony mountain view" loading="lazy">
           <img src="snow-range-balcony-2.jpeg" alt="Snow Range balcony view 2" loading="lazy">
+        </div>
+      `;
+    }
+    // The Lost Escape (Jibhi) photos
+    else if (propertyName.includes('lost escape')) {
+      roomGallery = `
+        <h4>The Lost Escape – Photo Gallery</h4>
+        <div class="photo-gallery">
+          <img src="the-lost-escape-room.jpeg" alt="The Lost Escape guest room" loading="lazy">
+          <img src="the-lost-escape-view.jpeg" alt="The Lost Escape mountain view" loading="lazy">
+          <img src="the-lost-escape-exterior.jpeg" alt="The Lost Escape exterior" loading="lazy">
         </div>
       `;
     }
@@ -180,7 +190,7 @@ function renderPropertyCard(property, stayGrid, propertySelect) {
         </div>
         <div class="quick-actions">
           <a href="tel:+919255100104">Call 9255100104</a>
-          <a href="https://wa.me/919255100104" target="_blank">WhatsApp</a>
+          <a href="https://wa.me" target="_blank">WhatsApp</a>
         </div>
         ${roomGallery}
       </div>
@@ -195,8 +205,15 @@ async function loadDynamicProperties() {
   const stayGrid = document.querySelector('.stay-grid');
   const propertySelect = document.querySelector('select[name="property"]');
 
-  // Default fallback properties if API fails or is hosted statically on GitHub Pages
+  // Default fallback properties (in reverse order so Kothi Paradise shows first)
   const defaultProperties = [
+    {
+      name: 'The Lost Escape',
+      location: 'JIBHI · VILLAGE DALICHA',
+      description: 'Village Dalicha, Kotla Dhar, Jibhi. Stay only; meals not included.',
+      price: '₹2,800 / room · stay only',
+      image_url: 'the-lost-escape-front.jpeg'
+    },
     {
       name: 'Snow Range',
       location: 'MANALI · BURWA VALLEY',
