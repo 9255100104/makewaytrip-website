@@ -126,3 +126,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   background: #f5f4ef;
   border-radius: 8px;
 }
+/* HOTEL SANJIVANI - ONE PHOTO PER ROW */
+#stays .stay-grid > .stay-card:nth-child(4) .photo-gallery {
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+}
+
+#stays .stay-grid > .stay-card:nth-child(4) .photo-gallery img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 450px;
+  object-fit: contain !important;
+  background: #f5f4ef;
+  border-radius: 12px;
+}
