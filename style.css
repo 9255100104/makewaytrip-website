@@ -70,3 +70,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     height: 280px;
   }
 }
+/* Remove large gaps between hotel cards */
+#stays .stay-grid {
+  display: block !important;
+  column-count: 3;
+  column-gap: 25px;
+}
+
+#stays .stay-card {
+  display: inline-block !important;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 25px;
+}
+
+@media(max-width:850px) {
+  #stays .stay-grid { column-count: 2; }
+}
+
+@media(max-width:600px) {
+  #stays .stay-grid { column-count: 1; }
+}
