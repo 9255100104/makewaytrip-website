@@ -72,17 +72,49 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 /* FIX HOTEL CARD LAYOUT */
 #stays .stay-grid {
+
+/* FINAL HOTEL CARD LAYOUT FIX */
+#stays .stay-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  column-count: initial !important;
-  gap: 25px !important;
+  gap: 15px !important;
+  width: 100% !important;
   align-items: stretch;
 }
 
 #stays .stay-card {
   display: flex !important;
-  flex-direction: column;
-  width: auto !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+#stays .stay-card > img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 260px !important;
+  object-fit: cover !important;
+}
+
+#stays .stay-card .card-body {
+  width: 100% !important;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 850px) {
+  #stays .stay-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #stays .stay-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
   min-width: 0;
   margin: 0 !important;
 }
