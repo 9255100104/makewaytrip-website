@@ -70,7 +70,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     height: 280px;
   }
 }
-/* Remove large gaps between hotel cards */
+/* /* Correct hotel cards layout */
+#stays .stay-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  column-count: initial !important;
+  gap: 25px !important;
+  align-items: stretch;
+}
+
+#stays .stay-card {
+  display: flex !important;
+  flex-direction: column;
+  width: auto !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+#stays .stay-card .card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+@media(max-width:850px) {
+  #stays .stay-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width:600px) {
+  #stays .stay-grid {
+    grid-template-columns: 1fr !important;
+  }
+}*/
 #stays .stay-grid {
   display: block !important;
   column-count: 3;
