@@ -116,3 +116,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     grid-template-columns: 1fr !important;
   }
 }
+/* SHOW COMPLETE HOTEL GALLERY PHOTOS */
+#stays .stay-card .photo-gallery img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block;
+  background: #f5f4ef;
+  border-radius: 8px;
+}
