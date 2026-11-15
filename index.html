@@ -1,3 +1,10 @@
+आपकी पूरी वेबसाइट का 100% कंप्लीट और फाइनल index.html कोड नीचे दिया गया है। इसमें आपके सभी 5 होटल्स, उनकी सारी फोटोज़, नया Manali & Kasol (₹6,000/-) टूर पैकेज, Group Booking, Enquiry Form, और Call व WhatsApp नंबर शुरू से लेकर आखिर (</html>) तक पूरी तरह शामिल हैं।
+
+📋 कॉपी और पेस्ट करने का तरीका:
+
+1. नीचे दिए गए कोड बॉक्स के ऊपर दाईं तरफ बने Copy आइकॉन पर दबाकर पूरा कोड कॉपी करें।
+2. अपने फोन में GitHub पर index.html खोलें, पेंसिल (✏️) पर क्लिक करें, सारा पुराना कोड Select All ➔ Delete करें और इस नए कोड को Paste करके Commit changes कर दें।
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,3 +182,90 @@
           <span class="price">Ask for rates</span>
           <a href="#contact" class="text-link">Enquire →</a>
         </div>
+Use code with caution.
+📞 9255100104
+WhatsApp 9255100104
+
+Photo Gallery
+
+
+
+
+
+FEATURED TOUR PACKAGE
+Manali & Kasol Group Trip (3N / 4D)
+₹6,000 / Person · Pickup from Delhi & Chandigarh
+🏔️ Sightseeing Covered
+
+Manali Mall Road, Old Manali & Hadimba Temple
+Solang Valley, Atal Tunnel & Sissu Waterfall
+Kullu, Manikaran Sahib & Kasol Market
+
+✨ Package Inclusions
+
+AC Tempo Traveller (Delhi / Chandigarh)
+3-Star Hotel Stay + Riverside Camping in Kasol
+3 Breakfasts, 3 Dinners, Bonfire & DJ Night
+
+
+Book on WhatsApp (9255100104) →
+Enquire Details
+
+TRAVEL TOGETHER
+Group bookings made easier.
+Planning a family holiday, friends' getaway, college trip or group tour? Share your dates and group size with us.
+Enquire for group booking
+LET'S PLAN ITMake your enquiryFill in your details. We’ll prepare a WhatsApp message for you to send.
+Your name
+Phone number
+Property / destination
+Check-in date
+Guests / rooms
+Message
+Continue on WhatsApp (+91 92551 00104)
+
+Makeway Trip
+Call / WhatsApp: +91 92551 00104 · Salasar: +91 85718 13076 · makewaytrip82@gmail.com
+
+© 2026 Makeway Trip. All rights reserved. · Admin
+const langBtn = document.getElementById('langBtn');
+const nav = document.getElementById('nav');
+const menuBtn = document.getElementById('menuBtn');
+const bookingForm = document.getElementById('bookingForm');
+let currentLang = 'en';
+if (langBtn) {
+langBtn.addEventListener('click', () => {
+currentLang = currentLang === 'en' ? 'hi' : 'en';
+document.documentElement.lang = currentLang;
+document.querySelectorAll('[data-en][data-hi]').forEach((el) => {
+el.innerHTML = el.dataset[currentLang];
+});
+langBtn.textContent = currentLang === 'en' ? 'हिंदी' : 'English';
+});
+}
+if (menuBtn && nav) {
+menuBtn.addEventListener('click', () => {
+nav.classList.toggle('open');
+});
+}
+if (bookingForm) {
+bookingForm.addEventListener('submit', (event) => {
+event.preventDefault();
+const form = new FormData(bookingForm);
+const message = [
+'Hello Makeway Trip, I would like to enquire about a booking.',
+Name: ${form.get('name') || ''},
+Phone: ${form.get('phone') || ''},
+Property/Destination: ${form.get('property') || ''},
+Check-in: ${form.get('date') || 'Not specified'},
+Guests/Rooms: ${form.get('guests') || 'Not specified'},
+Message: ${form.get('message') || 'Not specified'}
+].join('\n');
+window.open(https://wa.me{encodeURIComponent(message)}, '_blank');
+});
+}
+
+
+
+अब आपकी वेबसाइट पूरी तरह से कंप्लीट है—सभी होटल्स, उनकी गैलरी फोटोज़, नया टूर पैकेज, हिंदी/इंग्लिश भाषा बटन और सही WhatsApp व Call नंबर सब कुछ एक साथ काम करेगा!
+Copying...
