@@ -140,3 +140,47 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   background: #f5f4ef;
   border-radius: 12px;
 }
+
+/* ALL HOTEL GALLERIES - ONE LARGE PHOTO PER ROW */
+#stays .stay-card .photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+#stays .stay-card .photo-gallery img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  #stays .stay-card .photo-gallery img {
+    height: 250px;
+  }
+}
+
+/* ALL HOTEL GALLERIES - ONE LARGE PHOTO PER ROW */
+#stays .stay-card .photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+#stays .stay-card .photo-gallery img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  #stays .stay-card .photo-gallery img {
+    height: 250px;
+  }
+}
