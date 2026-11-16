@@ -243,3 +243,60 @@ document.getElementById("langBtn").addEventListener("click",()=>setLanguage(curr
 </script>
 </body>
 </html>
+<!-- MAKEWAY TRIP FLIGHT SEARCH & BOOKING WIDGET -->
+<section id="flight-booking" style="max-width: 900px; margin: 30px auto; padding: 25px; background: linear-gradient(135deg, #0f2942, #1e4b7a); border-radius: 12px; color: #fff; font-family: Arial, sans-serif; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+  <h2 style="margin: 0 0 8px 0; font-size: 22px; color: #fbbf24;">✈️ Book Domestic & International Flights</h2>
+  <p style="margin: 0 0 20px 0; font-size: 13px; color: #cbd5e1;">Best B2B & Corporate Airfares by Makeway Trip | Instant Ticket Confirmation</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+    <div>
+      <label style="font-size: 12px; display: block; margin-bottom: 4px;">From (City/Airport)</label>
+      <input type="text" id="mwt-from" placeholder="e.g. Delhi (DEL)" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px;">
+    </div>
+    <div>
+      <label style="font-size: 12px; display: block; margin-bottom: 4px;">To (City/Airport)</label>
+      <input type="text" id="mwt-to" placeholder="e.g. Mumbai (BOM)" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px;">
+    </div>
+    <div>
+      <label style="font-size: 12px; display: block; margin-bottom: 4px;">Departure Date</label>
+      <input type="date" id="mwt-dep" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px;">
+    </div>
+    <div>
+      <label style="font-size: 12px; display: block; margin-bottom: 4px;">Return Date (Optional)</label>
+      <input type="date" id="mwt-ret" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px;">
+    </div>
+    <div>
+      <label style="font-size: 12px; display: block; margin-bottom: 4px;">Passengers & Class</label>
+      <select id="mwt-pax" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px;">
+        <option value="1 Adult - Economy">1 Adult (Economy)</option>
+        <option value="2 Adults - Economy">2 Adults (Economy)</option>
+        <option value="Family / Group (3+)">Family / Group (3+)</option>
+        <option value="Business Class">Business Class</option>
+      </select>
+    </div>
+  </div>
+
+  <button onclick="sendFlightQuery()" style="margin-top: 18px; width: 100%; padding: 12px; background: #f59e0b; color: #0f2942; font-weight: bold; font-size: 15px; border: none; border-radius: 6px; cursor: pointer;">
+    🔍 Search Flights & Get Best Fare on WhatsApp
+  </button>
+</section>
+
+<script>
+function sendFlightQuery() {
+  var from = document.getElementById('mwt-from').value || 'Not specified';
+  var to = document.getElementById('mwt-to').value || 'Not specified';
+  var dep = document.getElementById('mwt-dep').value || 'Flexible';
+  var ret = document.getElementById('mwt-ret').value || 'One-Way';
+  var pax = document.getElementById('mwt-pax').value;
+
+  var msg = "Hello *Makeway Trip*! I want to book a flight:%0A" +
+            "🛫 *From:* " + from + "%0A" +
+            "🛬 *To:* " + to + "%0A" +
+            "📅 *Departure:* " + dep + "%0A" +
+            "🔄 *Return:* " + ret + "%0A" +
+            "👥 *Passengers:* " + pax + "%0A" +
+            "Please share the best available flight options and fare.";
+
+  window.open("https://wa.me" + msg, "_blank");
+}
+</script>
