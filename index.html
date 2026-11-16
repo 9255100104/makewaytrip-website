@@ -154,3 +154,172 @@
         <h3>The Lost Escape</h3>
         <p>Village Dalicha, Kotla Dhar, Jibhi. Stay only; meals not included.</p>
         <div class="card-bottom">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makeway Trip | Your Journey, Our Way</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background: #f8fafc; color: #1e293b; line-height: 1.6; }
+    /* Header */
+    header { background: #1e3f2b; color: #ffffff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-bottom: 4px solid #f59e0b; }
+    .brand-box { display: flex; align-items: center; gap: 12px; }
+    .brand-box img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; }
+    .logo h1 { font-size: 22px; letter-spacing: 1px; }
+    .logo span { color: #fbbf24; }
+    .logo p { font-size: 12px; color: #cbd5e1; }
+    nav { margin-top: 8px; }
+    nav a { color: #ffffff; text-decoration: none; margin-left: 16px; font-size: 14px; font-weight: 600; }
+    nav a:hover { color: #fbbf24; }
+    /* Hero */
+    .hero { background: linear-gradient(rgba(30, 63, 43, 0.85), rgba(30, 63, 43, 0.85)), url('https://unsplash.com') center/cover; color: #fff; text-align: center; padding: 50px 20px; }
+    .hero h2 { font-size: 30px; margin-bottom: 10px; }
+    .hero p { font-size: 16px; max-width: 650px; margin: 0 auto 20px; color: #e2e8f0; }
+    .btn { display: inline-block; background: #f59e0b; color: #1e3f2b; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    /* Container & Cards */
+    .container { max-width: 1100px; margin: 35px auto; padding: 0 20px; }
+    .section-title { text-align: center; font-size: 26px; color: #1e3f2b; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+    .card { background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-top: 4px solid #1e3f2b; display: flex; flex-direction: column; justify-content: space-between; }
+    .card img { width: 100%; border-radius: 8px; margin-bottom: 14px; object-fit: cover; }
+    .card h3 { color: #1e3f2b; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: #475569; margin-bottom: 12px; }
+    .price { font-weight: bold; color: #b45309; font-size: 16px; margin-bottom: 12px; display: block; }
+    .card a { display: inline-block; text-align: center; background: #1e3f2b; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .card a:hover { background: #142b1d; }
+    /* Footer */
+    footer { background: #1e3f2b; color: #e2e8f0; text-align: center; padding: 26px 16px; margin-top: 40px; font-size: 14px; line-height: 1.8; }
+    footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR WITH LOGO -->
+  <header>
+    <div class="brand-box">
+      <img src="logo.png" alt="Makeway Trip Logo" onerror="this.style.display='none'">
+      <div class="logo">
+        <h1>MAKEWAY <span>TRIP</span></h1>
+        <p>Your Journey, Our Way &bull; Hisar, Haryana</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#flight-booking">Flights</a>
+      <a href="#packages">Hot Deals</a>
+      <a href="#stays">Stays</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <h2>Explore India with Makeway Trip</h2>
+    <p>Handpicked Stays, Desert Camps, Spiritual Getaways &amp; Best Domestic/International Flight Deals</p>
+    <a href="https://wa.me." target="_blank" class="btn">💬 Chat on WhatsApp: +91 9255100104</a>
+  </section>
+
+  <!-- FLIGHT SEARCH & BOOKING WIDGET -->
+  <div class="container">
+    <section id="flight-booking" style="padding: 25px; background: #1e3f2b; border: 2px solid #f59e0b; border-radius: 12px; color: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
+      <h2 style="margin: 0 0 6px 0; font-size: 22px; color: #fbbf24;">✈️ Book Domestic &amp; International Flights</h2>
+      <p style="margin: 0 0 18px 0; font-size: 13px; color: #e2e8f0;">Best B2B &amp; Corporate Airfares by Makeway Trip | Instant Ticket Confirmation</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px;">
+        <div>
+          <label style="font-size: 12px; display: block; margin-bottom: 4px; color: #cbd5e1;">From (City/Airport)</label>
+          <input type="text" id="mwt-from" placeholder="e.g. Delhi (DEL)" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; color: #000;">
+        </div>
+        <div>
+          <label style="font-size: 12px; display: block; margin-bottom: 4px; color: #cbd5e1;">To (City/Airport)</label>
+          <input type="text" id="mwt-to" placeholder="e.g. Mumbai (BOM)" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; color: #000;">
+        </div>
+        <div>
+          <label style="font-size: 12px; display: block; margin-bottom: 4px; color: #cbd5e1;">Departure Date</label>
+          <input type="date" id="mwt-dep" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; color: #000;">
+        </div>
+        <div>
+          <label style="font-size: 12px; display: block; margin-bottom: 4px; color: #cbd5e1;">Return Date (Optional)</label>
+          <input type="date" id="mwt-ret" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; color: #000;">
+        </div>
+        <div>
+          <label style="font-size: 12px; display: block; margin-bottom: 4px; color: #cbd5e1;">Passengers &amp; Class</label>
+          <select id="mwt-pax" style="width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; color: #000;">
+            <option value="1 Adult - Economy">1 Adult (Economy)</option>
+            <option value="2 Adults - Economy">2 Adults (Economy)</option>
+            <option value="Family / Group (3+)">Family / Group (3+)</option>
+            <option value="Business Class">Business Class</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" onclick="sendFlightQuery()" style="margin-top: 18px; width: 100%; padding: 12px; background: #f59e0b; color: #1e3f2b; font-weight: bold; font-size: 15px; border: none; border-radius: 6px; cursor: pointer;">
+        🔍 Search Flights &amp; Get Best Fare on WhatsApp
+      </button>
+    </section>
+  </div>
+
+  <!-- POPULAR TOUR PACKAGES WITH POSTERS -->
+  <section id="packages" class="container">
+    <h2 class="section-title">Trending Winter Packages</h2>
+    <div class="grid">
+      <div class="card">
+        <div>
+          <img src="manali.jpg" alt="Manali & Kasol Snow Escape ₹4999">
+          <h3>Manali &amp; Kasol Snow Escape</h3>
+          <p>3 Nights / 4 Days Stay, Breakfast &amp; Dinner, Solang Valley, Atal Tunnel, Kasol &amp; Manikaran Sightseeing with Bonfire &amp; DJ Night.</p>
+          <span class="price">Only ₹4,999/- Per Person</span>
+        </div>
+        <a href="https://wa.me." target="_blank">Book Now on WhatsApp</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="jaisalmer.jpg" alt="Jaisalmer Desert Safari Camp">
+          <h3>Jaisalmer Desert Safari &amp; Camp</h3>
+          <p>1 Night Luxury Swiss Tent Stay, Camel Safari, Jeep Safari, Rajasthani Cultural Program, Bonfire, DJ Night, Dinner &amp; Breakfast.</p>
+          <span class="price">Best Seasonal B2B &amp; Family Rates</span>
+        </div>
+        <a href="https://wa.me." target="_blank">Book Now on WhatsApp</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Kashi &amp; Ayodhya Spiritual Yatra</h3>
+          <p>Complete family &amp; group darshan tour covering Shri Kashi Vishwanath, Ganga Aarti, and Shri Ram Janmabhoomi Ayodhya with comfortable stay &amp; cab.</p>
+          <span class="price">Customized Family &amp; Group Quotes</span>
+        </div>
+        <a href="https://wa.me." target="_blank">Get Quote on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED STAYS -->
+  <section id="stays" class="container">
+    <h2 class="section-title">Handpicked Stays &amp; Hotels</h2>
+    <div class="grid">
+      <div class="card">
+        <div>
+          <h3>Hotel Kothi Paradise &amp; Snow Range</h3>
+          <p>📍 Manali (Rohtang Road &amp; Burwa Valley) — Scenic mountain views &amp; comfortable rooms.</p>
+        </div>
+        <a href="https://wa.me" target="_blank">Book Stay</a>
+      </div>
+      <div class="card">
+        <div>
+          <h3>The Lost Escape, Jibhi</h3>
+          <p>📍 Village Dalicha, Kotla Dhar — Peaceful nature stay in Tirthan/Jibhi valley.</p>
+          <span class="price">₹2,800 / Room (Stay Only)</span>
+        </div>
+        <a href="https://wa.me" target="_blank">Book Stay</a>
+      </div>
+      <div class="card">
+        <div>
+          <h3>Hotel Sanjivani, Salasar</h3>
+          <p>📍 Near Salasar Hanuman Mandir &amp; Khatu Shyam Ji — Ideal for spiritual yatras.</p>
+        </div>
+        <a href="https://wa.me" target="_blank">Salasar Desk: +91 8571813076</a>
+      </div>
+    </div>
