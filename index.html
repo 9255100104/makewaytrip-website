@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makeway Trip | Flights, Stays & Holidays</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #f97316;
+      --whatsapp: #25d366;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    header {
+      background: #fff;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .brand span { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent); font-weight: 700; }
+    nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: 0.95rem; }
+    nav a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f4c81 0%, #1e3a8a 100%);
+      color: #fff;
+      padding: 4rem 5%;
+      text-align: center;
+    }
+    .hero .tag { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #fed7aa; font-weight: 700; }
+    .hero h1 { font-size: 2.5rem; margin: 0.5rem 0 1rem; line-height: 1.2; }
+    .hero p { max-width: 650px; margin: 0 auto 1.5rem; color: #e2e8f0; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .btn { padding: 0.75rem 1.4rem; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; border: none; font-size: 0.95rem; }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-white { background: #fff; color: var(--primary); }
+    .btn-wa { background: var(--whatsapp); color: #fff; }
+    .btn-pay { background: #2563eb; color: #fff; }
+    .destinations-bar { font-size: 0.85rem; letter-spacing: 1.5px; color: #bae6fd; font-weight: 600; margin-top: 1rem; }
+
+    /* Container */
+    .container { max-width: 1150px; margin: 0 auto; padding: 3rem 5%; }
+    .section-head { text-align: center; margin-bottom: 2rem; }
+    .section-head .sub { color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; }
+    .section-head h2 { font-size: 1.9rem; color: var(--primary); margin: 0.3rem 0; }
+    .section-head p { color: var(--muted); }
+
+    /* Flight Box */
+    .flight-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+      margin-top: -2.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    .flight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 0.3rem; }
+    .field input, .field select { width: 100%; padding: 0.7rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; }
+
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.8rem; }
+    .card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+    .card img { width: 100%; height: 210px; object-fit: cover; background: #e2e8f0; }
+    .card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .loc { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+    .card h3 { font-size: 1.25rem; margin: 0.3rem 0 0.6rem; color: var(--primary); }
+    .card p { font-size: 0.92rem; color: var(--muted); margin-bottom: 1rem; flex: 1; }
+    .price { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 1rem; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .card-actions .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+
+    /* Footer */
+    footer { background: #0f172a; color: #cbd5e1; padding: 3rem 5% 2rem; text-align: center; }
+    footer h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
+    footer p { font-size: 0.9rem; margin: 0.4rem 0; }
+    .footer-links { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid #1e293b; font-size: 0.85rem; }
+    .footer-links a { color: #38bdf8; margin: 0 0.6rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="brand">MAKEWAY TRIP <span>FLIGHTS · STAYS · TOURS</span></a>
+    <nav>
+      <a href="#flights">Flights</a>
+      <a href="#stays">Stays</a>
+      <a href="#packages">Tour Packages</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="tag">YOUR JOURNEY, OUR WAY</div>
+    <h1>Find your next happy place.</h1>
+    <p>Discover handpicked stays, flight deals, and memorable trips across the mountains, desert, and spiritual destinations.</p>
+    <div class="hero-btns">
+      <a href="#stays" class="btn btn-white">Explore Stays</a>
+      <a href="#flights" class="btn btn-accent">✈️ Book Flights</a>
+      <a href="https://rzp.io/rzp/ivSmwsg" target="_blank" class="btn btn-pay">💳 Pay Online</a>
+      <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp Us →</a>
+    </div>
+    <div class="destinations-bar">MANALI · JIBHI · JAISALMER · SALASAR · KHATU SHYAM JI</div>
+    <p style="margin-top:0.8rem; font-size:0.9rem;">⌖ Plan your next getaway · Call <strong>+91 92551 00104</strong></p>
+  </section>
+
+  <!-- Flight Booking -->
+  <div class="container" id="flights">
+    <div class="flight-box">
+      <h2 style="color:var(--primary); font-size:1.4rem;">✈️ Book Domestic & International Flights</h2>
+      <p style="color:var(--muted); font-size:0.9rem;">Best B2B & Corporate Airfares by Makeway Trip | Instant Ticket Confirmation</p>
+      <div class="flight-grid">
+        <div class="field">
+          <label>From (City/Airport)</label>
+          <input type="text" id="fromCity" placeholder="e.g. Delhi (DEL)" />
+        </div>
+        <div class="field">
+          <label>To (City/Airport)</label>
+          <input type="text" id="toCity" placeholder="e.g. Mumbai (BOM)" />
+        </div>
+        <div class="field">
+          <label>Departure Date</label>
+          <input type="date" id="depDate" />
+        </div>
+        <div class="field">
+          <label>Return Date (Optional)</label>
+          <input type="date" id="retDate" />
+        </div>
+        <div class="field">
+          <label>Passengers & Class</label>
+          <select id="paxClass">
+            <option>1 Adult (Economy)</option>
+            <option>2 Adults (Economy)</option>
+            <option>Family / Group (3+)</option>
+            <option>Business Class</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:1.2rem;">
+        <button onclick="sendFlightEnquiry()" class="btn btn-wa">🔍 Search Flights & Get Best Fare on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Stays -->
+  <section class="container" id="stays">
+    <div class="section-head">
+      <div class="sub">STAY SOMEWHERE SPECIAL</div>
+      <h2>Featured Stays</h2>
+      <p>Choose a stay that makes the journey as memorable as the destination.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Hotel 1 -->
+      <div class="card">
+        <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise Manali" />
+        <div class="card-body">
+          <div class="loc">MANALI · ROHTANG ROAD</div>
+          <h3>Hotel Kothi Paradise</h3>
+          <p>Enjoy a comfortable mountain stay at Hotel Kothi Paradise, located on Rohtang Road, Manali. Beautiful mountain views, cozy rooms and a peaceful atmosphere.</p>
+          <div class="price">₹2,500 / Night · Includes Breakfast & Dinner</div>
+          <div class="card-actions">
+            <a href="https://rzp.io/rzp/ivSmwsg" target="_blank" class="btn btn-pay">💳 Book & Pay Online</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
+            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">📞 Call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel 2 -->
+      <div class="card">
+        <img src="snow-range-manali.jpeg" alt="Hotel Snow Range Manali" />
+        <div class="card-body">
+          <div class="loc">MANALI · BURWA VALLEY</div>
+          <h3>Hotel Snow Range</h3>
+          <p>A beautiful mountain stay in Burwa Valley, Manali, offering comfortable rooms, stunning snow-covered mountain views, and a peaceful atmosphere.</p>
+          <div class="price">₹1,800 / Night</div>
+          <div class="card-actions">
+            <a href="https://rzp.io/rzp/ivSmwsg" target="_blank" class="btn btn-pay">💳 Book & Pay Online</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
+            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">📞 Call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel 3 -->
+      <div class="card">
+        <img src="IMG-20261102-WA0002.jpg" alt="The Lost Escape Jibhi" />
+        <div class="card-body">
 <!-- Makeway Trip Complete index-v2.html code is provided in the source structure -->
