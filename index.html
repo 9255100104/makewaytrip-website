@@ -79,7 +79,7 @@
     /* Cards Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.8rem; }
     .card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
-    .card img { width: 100%; height: 210px; object-fit: cover; background: #e2e8f0; }
+    .card > img { width: 100%; height: 210px; object-fit: cover; background: #e2e8f0; cursor: pointer; }
     .card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
     .loc { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
     .card h3 { font-size: 1.25rem; margin: 0.3rem 0 0.6rem; color: var(--primary); }
@@ -87,6 +87,27 @@
     .price { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 1rem; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .card-actions .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+
+    /* Room Gallery Thumbnails */
+    .gallery-box { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #e2e8f0; }
+    .gallery-title { font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .thumbs { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .thumbs img { width: 52px; height: 42px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #e2e8f0; }
+    .thumbs img:hover { border-color: var(--accent); transform: scale(1.06); }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .lightbox img { max-width: 92%; max-height: 85vh; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 28px; color: #fff; font-size: 2.2rem; font-weight: bold; cursor: pointer; }
 
     /* Footer */
     footer { background: #0f172a; color: #cbd5e1; padding: 3rem 5% 2rem; text-align: center; }
@@ -114,14 +135,14 @@
   <section class="hero">
     <div class="tag">YOUR JOURNEY, OUR WAY</div>
     <h1>Find your next happy place.</h1>
-    <p>Discover handpicked stays, flight deals, and memorable trips across the mountains, desert, and spiritual destinations.</p>
+    <p>Discover handpicked stays, flight deals, and memorable trips across the mountains and spiritual destinations.</p>
     <div class="hero-btns">
       <a href="#stays" class="btn btn-white">Explore Stays</a>
       <a href="#flights" class="btn btn-accent">✈️ Book Flights</a>
       <a href="https://rzp.io/rzp/ivSmwsg" target="_blank" class="btn btn-pay">💳 Pay Online</a>
       <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp Us →</a>
     </div>
-    <div class="destinations-bar">MANALI · JIBHI · JAISALMER · SALASAR · KHATU SHYAM JI</div>
+    <div class="destinations-bar">MANALI · JIBHI · SALASAR · KHATU SHYAM JI</div>
     <p style="margin-top:0.8rem; font-size:0.9rem;">⌖ Plan your next getaway · Call <strong>+91 92551 00104</strong></p>
   </section>
 
@@ -174,7 +195,7 @@
     <div class="grid">
       <!-- Hotel 1 -->
       <div class="card">
-        <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise Manali" />
+        <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise Manali" onclick="openLightbox(this.src)" />
         <div class="card-body">
           <div class="loc">MANALI · ROHTANG ROAD</div>
           <h3>Hotel Kothi Paradise</h3>
@@ -185,33 +206,3 @@
             <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
             <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">📞 Call</a>
           </div>
-        </div>
-      </div>
-
-      <!-- Hotel 2 -->
-      <div class="card">
-        <img src="snow-range-manali.jpeg" alt="Hotel Snow Range Manali" />
-        <div class="card-body">
-          <div class="loc">MANALI · BURWA VALLEY</div>
-          <h3>Hotel Snow Range</h3>
-          <p>A beautiful mountain stay in Burwa Valley, Manali, offering comfortable rooms, stunning snow-covered mountain views, and a peaceful atmosphere.</p>
-          <div class="price">₹1,800 / Night</div>
-          <div class="card-actions">
-            <a href="https://rzp.io/rzp/ivSmwsg" target="_blank" class="btn btn-pay">💳 Book & Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">📞 Call</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hotel 3 -->
-      <div class="card">
-        <img src="IMG-20261102-WA0002.jpg" alt="The Lost Escape Jibhi" />
-        <div class="card-body">
-<!-- Makeway Trip Complete index-v2.html code is provided in the source structure -->
-      <h2>Tour Packages & Special Deals</h2>
-      <p>All-inclusive customizable packages for couples, families, and groups.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
