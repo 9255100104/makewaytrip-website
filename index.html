@@ -70,11 +70,57 @@
     .thumbs img { width: 52px; height: 42px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #e2e8f0; }
     .thumbs img:hover { border-color: var(--accent); transform: scale(1.06); }
 
-    <!-- Clean White Lightbox Popup -->
-  <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(15, 23, 42, 0.65); backdrop-filter:blur(5px); z-index:9999; justify-content:center; align-items:center; padding:1.5rem;">
-    <div onclick="event.stopPropagation()" style="position:relative; background:#ffffff; padding:12px; border-radius:14px; box-shadow:0 20px 50px rgba(0,0,0,0.3); max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center;">
-      <button onclick="closeLightbox()" style="position:absolute; top:-14px; right:-14px; background:#f97316; color:#fff; border:none; width:34px; height:34px; border-radius:50%; font-size:1.2rem; font-weight:bold; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.2);">✕</button>
-      <img id="lightbox-img" src="" alt="Full View" style="max-width:85vw; max-height:80vh; border-radius:8px; object-fit:contain; display:block;" />
+     <!-- Lightbox with Next / Prev Buttons -->
+  <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.88); backdrop-filter:blur(4px); z-index:9999; justify-content:center; align-items:center; padding:1rem;">
+    <button onclick="event.stopPropagation(); changePhoto(-1)" style="position:absolute; left:18px; background:rgba(255,255,255,0.2); color:#fff; border:none; width:44px; height:44px; border-radius:50%; font-size:1.5rem; cursor:pointer;">❮</button>
+    <div onclick="event.stopPropagation()" style="position:relative; background:#fff; padding:8px; border-radius:12px; max-width:85vw; max-height:88vh;">
+      <button onclick="closeLightbox()" style="position:absolute; top:-14px; right:-14px; background:#f97316; color:#fff; border:none; width:34px; height:34px; border-radius:50%; font-size:1.1rem; font-weight:bold; cursor:pointer;">✕</button>
+      <img id="lightbox-img" src="" alt="Full View" style="max-width:82vw; max-height:82vh; border-radius:8px; object-fit:contain; display:block;" />
+    </div>
+    <button onclick="event.stopPropagation(); changePhoto(1)" style="position:absolute; right:18px; background:rgba(255,255,255,0.2); color:#fff; border:none; width:44px; height:44px; border-radius:50%; font-size:1.5rem; cursor:pointer;">❯</button>
+  </div>
+
+  <script>
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    function sendFlightEnquiry() {
+      const from = document.getElementById('fromCity').value || 'Not specified';
+      const to = document.getElementById('toCity').value || 'Not specified';
+      const dep = document.getElementById('depDate').value || 'Flexible';
+      const ret = document.getElementById('retDate').value || 'One-way';
+      const pax = document.getElementById('paxClass').value;
+      const msg = `Hello Makeway Trip! I want the best flight fare:\n• From: ${from}\n• To: ${to}\n• Departure: ${dep}\n• Return: ${ret}\n• Passengers: ${pax}`;
+      window.open(`https://wa.me{encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function openLightbox(src) {
+      const clickedImg = Array.from(document.querySelectorAll('.card img')).find(img => img.src === src);
+      if (clickedImg) {
+        const card = clickedImg.closest('.card');
+        currentGallery = Array.from(card.querySelectorAll('img')).map(img => img.src);
+        currentIndex = currentGallery.indexOf(src);
+      } else {
+        currentGallery = [src];
+        currentIndex = 0;
+      }
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function changePhoto(step) {
+      if (!currentGallery.length) return;
+      currentIndex = (currentIndex + step + currentGallery.length) % currentGallery.length;
+      document.getElementById('lightbox-img').src = currentGallery[currentIndex];
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+
     </div>
   </div>
 
