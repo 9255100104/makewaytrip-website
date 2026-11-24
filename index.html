@@ -69,14 +69,8 @@
     .thumbs { display: flex; gap: 0.45rem; flex-wrap: wrap; }
     .thumbs img { width: 52px; height: 42px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #e2e8f0; }
     .thumbs img:hover { border-color: var(--accent); transform: scale(1.06); }
-
-    /* Footer */
-    footer { background: #0f172a; color: #cbd5e1; padding: 3rem 5% 2rem; text-align: center; }
-    footer h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
-    footer p { font-size: 0.9rem; margin: 0.4rem 0; }
-    .footer-links { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid #1e293b; font-size: 0.85rem; }
-    .footer-links a { color: #38bdf8; margin: 0 0.6rem; }
   </style>
+</head>
 <body>
 
   <!-- Header -->
@@ -86,7 +80,7 @@
       <a href="#flights">Flights</a>
       <a href="#stays">Stays</a>
       <a href="#packages">Tour Packages</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a> 
+      <a href="https://instagram.com" target="_blank">Instagram</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -106,9 +100,11 @@
     <p style="margin-top:0.8rem; font-size:0.9rem;">⌖ Plan your next getaway · Call <strong>+91 92551 00104</strong></p>
   </section>
 
-   
-      <p style="color:var(--muted); font-size:0.9rem;">Best B2B & Corporate Airfares by Makeway Trip | Instant Ticket Confirmation</p>
-      <div class="flight-grid">
+  <!-- Flight Booking -->
+  <div class="container" id="flights">
+    <div class="flight-box">
+      <h2 style="color:var(--primary); font-size:1.4rem;">✈️ Book Domestic & International Flights</h2>
+
         <div class="field">
           <label>From (City/Airport)</label>
           <input type="text" id="fromCity" placeholder="e.g. Delhi (DEL)" />
