@@ -4,26 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Makeway Trip | Flights, Stays & Holidays</title>
-  <style>
-    :root {
-      --primary: #0f4c81;
-      --accent: #f97316;
-      --whatsapp: #25d366;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
+     /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
+    .card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column; max-width: 420px; margin: 0 auto; width: 100%; }
+    .card > img { width: 100%; height: 280px; object-fit: cover; object-position: center; background: #f1f5f9; cursor: pointer; transition: 0.3s; }
+    .card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .loc { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+    .card h3 { font-size: 1.25rem; margin: 0.3rem 0 0.6rem; color: var(--primary); }
+    .card p { font-size: 0.92rem; color: var(--muted); margin-bottom: 1rem; flex: 1; }
+    .price { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 1rem; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .card-actions .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
 
-    /* Navbar */
-    header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 1rem; }
-    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-    .brand span { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent); font-weight: 700; }
-    nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: 0.95rem; }
-    nav a:hover { color: var(--accent); }
+    /* Room Gallery Thumbnails (बड़ी फ़ोटो के साथ एडजस्ट) */
+    .gallery-box { margin-top: 1.2rem; padding-top: 0.9rem; border-top: 1px solid #e2e8f0; }
+    .gallery-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .thumbs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .thumbs img { width: 100%; height: 95px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #f1f5f9; }
+    .thumbs img:hover { border-color: var(--accent); transform: scale(1.03); }
+{ color: var(--accent); }
 
     /* Hero Banner */
     .hero { background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.58)), url('hero-bg.jpg.jpg') center/cover no-repeat, #0f4c81; color: #fff; padding: 4.5rem 5%; text-align: center; }
