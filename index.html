@@ -59,12 +59,13 @@
         </div>
       </div>
 
-      <!-- Hotel 3: The Lost Escape Jibhi -->
-      <div class="card">
-        <img src="the-lost-escape-main.jpg" alt="The Lost Escape Jibhi" onclick="openLightbox(this.src)" />
-        <div class="card-body">
-          <div class="loc">JIBHI · VILLAGE DALICHA</div>
-          <h3>The Lost Escape</h3>
+         /* Room Gallery Thumbnails */
+    .gallery-box { margin-top: 1.2rem; padding-top: 0.9rem; border-top: 1px solid #e2e8f0; }
+    .gallery-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .thumbs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .thumbs img { width: 100% !important; height: 100px !important; object-fit: cover !important; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #f1f5f9; display: block; }
+    .thumbs img:hover { border-color: var(--accent); transform: scale(1.03); }
+
           <p>Village Dalicha, Kotla Dhar, Jibhi. Surrounded by pine forests and mountain views. Stay only; meals not included.</p>
           <div class="price">₹2,800 / Night · Stay Only</div>
           <div class="card-actions">
