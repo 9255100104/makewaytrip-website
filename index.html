@@ -18,15 +18,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
-
-    /* Navbar */
     header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 1rem; }
     .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
     .brand span { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent); font-weight: 700; }
     nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: 0.95rem; }
     nav a:hover { color: var(--accent); }
-
-    /* Hero Banner */
     .hero { background: linear-gradient(rgba(15, 23, 42, 0.48), rgba(15, 23, 42, 0.62)), url('hero-bg.jpg.jpg') center/cover no-repeat, #0f4c81; color: #fff; padding: 4.5rem 5%; text-align: center; }
     .hero .tag { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #fed7aa; font-weight: 700; }
     .hero h1 { font-size: 2.5rem; margin: 0.5rem 0 1rem; line-height: 1.2; }
@@ -38,21 +34,15 @@
     .btn-wa { background: var(--whatsapp); color: #fff; }
     .btn-pay { background: #2563eb; color: #fff; }
     .destinations-bar { font-size: 0.85rem; letter-spacing: 1.5px; color: #bae6fd; font-weight: 600; margin-top: 1rem; }
-
-    /* Container */
     .container { max-width: 1150px; margin: 0 auto; padding: 3rem 5%; }
     .section-head { text-align: center; margin-bottom: 2rem; }
     .section-head .sub { color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; }
     .section-head h2 { font-size: 1.9rem; color: var(--primary); margin: 0.3rem 0; }
     .section-head p { color: var(--muted); }
-
-    /* Flight Box */
     .flight-box { background: #fff; padding: 2rem; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.07); margin-top: -2.5rem; position: relative; z-index: 10; }
     .flight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
     .field label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 0.3rem; }
     .field input, .field select { width: 100%; padding: 0.7rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; }
-
-    /* Cards Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
     .card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column; max-width: 420px; margin: 0 auto; width: 100%; }
     .card > img { width: 100%; height: 280px; object-fit: cover; object-position: center; background: #f1f5f9; cursor: pointer; transition: 0.3s; }
@@ -63,15 +53,11 @@
     .price { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 1rem; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .card-actions .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
-
-    /* Room Gallery Thumbnails (Uniform Size) */
     .gallery-box { margin-top: 1.2rem; padding-top: 0.9rem; border-top: 1px solid #e2e8f0; }
     .gallery-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
     .thumbs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
     .thumbs img { width: 100% !important; height: 100px !important; object-fit: cover !important; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #f1f5f9; display: block; }
     .thumbs img:hover { border-color: var(--accent); transform: scale(1.03); }
-
-    /* Footer */
     footer { background: #0f172a; color: #cbd5e1; padding: 3rem 5% 2rem; text-align: center; }
     footer h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
     footer p { font-size: 0.9rem; margin: 0.4rem 0; }
@@ -80,8 +66,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
     <a href="#" class="brand">MAKEWAY TRIP <span>FLIGHTS &middot; STAYS &middot; TOURS</span></a>
     <nav>
@@ -92,8 +76,6 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
-  <!-- Hero Section -->
   <section class="hero">
     <div class="tag">YOUR JOURNEY, OUR WAY</div>
     <h1>Find your next happy place.</h1>
@@ -107,55 +89,23 @@
     <div class="destinations-bar">MANALI &middot; JIBHI &middot; SALASAR &middot; KHATU SHYAM JI</div>
     <p style="margin-top:0.8rem; font-size:0.9rem;">Plan your next getaway &middot; Call <strong>+91 92551 00104</strong></p>
   </section>
-
-  <!-- Flight Booking -->
   <div class="container" id="flights">
     <div class="flight-box">
       <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Book Domestic &amp; International Flights</h2>
       <p style="color:var(--muted); font-size:0.9rem;">Best B2B &amp; Corporate Airfares by Makeway Trip | Instant Ticket Confirmation</p>
       <div class="flight-grid">
-        <div class="field">
-          <label>From (City/Airport)</label>
-          <input type="text" id="fromCity" placeholder="e.g. Delhi (DEL)" />
-        </div>
-        <div class="field">
-          <label>To (City/Airport)</label>
-          <input type="text" id="toCity" placeholder="e.g. Mumbai (BOM)" />
-        </div>
-        <div class="field">
-          <label>Departure Date</label>
-          <input type="date" id="depDate" />
-        </div>
-        <div class="field">
-          <label>Return Date (Optional)</label>
-          <input type="date" id="retDate" />
-        </div>
-        <div class="field">
-          <label>Passengers &amp; Class</label>
-          <select id="paxClass">
-            <option>1 Adult (Economy)</option>
-            <option>2 Adults (Economy)</option>
-            <option>Family / Group (3+)</option>
-            <option>Business Class</option>
-          </select>
-        </div>
+        <div class="field"><label>From (City/Airport)</label><input type="text" id="fromCity" placeholder="e.g. Delhi (DEL)" /></div>
+        <div class="field"><label>To (City/Airport)</label><input type="text" id="toCity" placeholder="e.g. Mumbai (BOM)" /></div>
+        <div class="field"><label>Departure Date</label><input type="date" id="depDate" /></div>
+        <div class="field"><label>Return Date (Optional)</label><input type="date" id="retDate" /></div>
+        <div class="field"><label>Passengers &amp; Class</label><select id="paxClass"><option>1 Adult (Economy)</option><option>2 Adults (Economy)</option><option>Family / Group (3+)</option><option>Business Class</option></select></div>
       </div>
-      <div style="margin-top:1.2rem;">
-        <button onclick="sendFlightEnquiry()" class="btn btn-wa">&#128269; Search Flights &amp; Get Best Fare on WhatsApp</button>
-      </div>
+      <div style="margin-top:1.2rem;"><button onclick="sendFlightEnquiry()" class="btn btn-wa">&#128269; Search Flights &amp; Get Best Fare on WhatsApp</button></div>
     </div>
   </div>
-
-  <!-- Featured Stays -->
   <section class="container" id="stays">
-    <div class="section-head">
-      <div class="sub">STAY SOMEWHERE SPECIAL</div>
-      <h2>Featured Stays</h2>
-      <p>Choose a stay that makes the journey as memorable as the destination.</p>
-    </div>
-
+    <div class="section-head"><div class="sub">STAY SOMEWHERE SPECIAL</div><h2>Featured Stays</h2><p>Choose a stay that makes the journey as memorable as the destination.</p></div>
     <div class="grid">
-      <!-- Hotel 1: Kothi Paradise -->
       <div class="card">
         <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise Manali" />
         <div class="card-body">
@@ -167,3 +117,16 @@
             <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
             <a href="https://wa.me?text=Hi,%20I%20want%20to%20unlock%20the%20Surprise%20Offer%20Price%20for%20Hotel%20Kothi%20Paradise,%20Manali." target="_blank" class="btn btn-wa">WhatsApp</a>
             <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Call</a>
+          </div>
+          <div class="gallery-box">
+            <div class="gallery-title">Room Gallery &amp; Menu (Tap photo to view big)</div>
+            <div class="thumbs">
+              <img src="ROOM PIC KHOTHI 1.jpeg" alt="Kothi 1" />
+              <img src="ROOM PIC KHOTHI 3.jpeg" alt="Kothi 2" />
+              <img src="ROOM PIC KHOTI.jpeg" alt="Kothi 3" />
+              <img src="kothi-paradise-menu.png" alt="Kothi Menu" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
