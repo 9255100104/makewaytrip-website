@@ -269,7 +269,46 @@
     <p>&#128222; Call / WhatsApp: <a href="tel:+919255100104" style="color:#fff; font-weight:700;">+91 92551 00104</a> | Instagram: <a href="https://www.instagram.com/makewaytrip.in/" target="_blank" style="color:#38bdf8; font-weight:700;">@makewaytrip.in</a></p>
     <div class="footer-links"><a href="privacy-policy.html">Privacy Policy</a><a href="refund-policy.html">Refund &amp; Cancellation Policy</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a></div>
     <p style="margin-top:1rem; font-size:0.8rem; color:#64748b;">&copy; 2026 Makeway Trip. All Rights Reserved.</p>
-  </footer>
+  </footer>  <script>
+    function toggleReturnDate() {
+      var isRound = document.querySelector('input[name="tripType"]:checked').value === 'Round-Trip';
+      var retInput = document.getElementById('retDate');
+      var retBox = document.getElementById('retDateBox');
+      retInput.disabled = !isRound;
+      retBox.style.opacity = isRound ? '1' : '0.5';
+      if (!isRound) retInput.value = '';
+    }
+
+    function swapCities() {
+      var fromEl = document.getElementById('fromCity');
+      var toEl = document.getElementById('toCity');
+      var temp = fromEl.value;
+      fromEl.value = toEl.value;
+      toEl.value = temp;
+    }
+
+    function sendFlightEnquiry() {
+      var trip = document.querySelector('input[name="tripType"]:checked').value;
+      var from = document.getElementById('fromCity').value || 'Not specified';
+      var to = document.getElementById('toCity').value || 'Not specified';
+      var dep = document.getElementById('depDate').value || 'Flexible';
+      var ret = document.getElementById('retDate').value || 'N/A';
+      var pax = document.getElementById('paxClass').value;
+      var msg = "Hi Makeway Trip, I need Flight Ticket Fare:%0ATrip Type: " + trip + "%0AFrom: " + from + "%0ATo: " + to + "%0ADeparture: " + dep + (trip === 'Round-Trip' ? "%0AReturn: " + ret : "") + "%0APassengers: " + pax;
+      window.open("https://wa.me" + msg, "_blank");
+    }
+
+    document.querySelectorAll('.thumbs img').forEach(function(thumb) {
+      thumb.onclick = function() {
+        var card = this.closest('.card');
+        var mainImg = card.querySelector(':scope > img');
+        if (mainImg) { mainImg.src = this.src; }
+      };
+    });
+  </script>
+</body>
+</html>
+
   <script>
     function sendFlightEnquiry() {
       var from = document.getElementById('fromCity').value || 'Not specified';
