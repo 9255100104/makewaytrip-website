@@ -91,7 +91,79 @@
     <p style="margin-top:0.8rem; font-size:0.9rem;">Plan your next getaway &middot; Call <strong>+91 92551 00104</strong></p>
   </section>
 
-  container
+   <!-- Flight Booking -->
+  <div class="container" id="flights">
+    <div class="flight-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
+        <div>
+          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Book Domestic &amp; International Flights</h2>
+          <p style="color:var(--muted); font-size:0.9rem;">Best B2B &amp; Corporate Airfares by Makeway Trip | Instant PNR Confirmation</p>
+        </div>
+        <div style="display:flex; gap:1rem; background:#f1f5f9; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.9rem; font-weight:700; color:var(--primary);">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+            <input type="radio" name="tripType" value="One-Way" checked onchange="toggleReturnDate()" /> One-Way
+          </label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+            <input type="radio" name="tripType" value="Round-Trip" onchange="toggleReturnDate()" /> Round-Trip
+          </label>
+        </div>
+      </div>
+
+      <datalist id="airportList">
+        <option value="Delhi (DEL) - Indira Gandhi Intl"></option>
+        <option value="Chandigarh (IXC) - Shaheed Bhagat Singh Intl"></option>
+        <option value="Jaipur (JAI) - Jaipur Intl"></option>
+        <option value="Mumbai (BOM) - Chhatrapati Shivaji Intl"></option>
+        <option value="Bengaluru (BLR) - Kempegowda Intl"></option>
+        <option value="Goa (GOI / GOX) - Dabolim &amp; Mopa"></option>
+        <option value="Hyderabad (HYD) - Rajiv Gandhi Intl"></option>
+        <option value="Kolkata (CCU) - Netaji Subhas Chandra Bose Intl"></option>
+        <option value="Ahmedabad (AMD) - Sardar Vallabhbhai Patel Intl"></option>
+        <option value="Pune (PNQ) - Pune Airport"></option>
+        <option value="Dubai (DXB) - Dubai Intl"></option>
+        <option value="Bangkok (BKK) - Suvarnabhumi"></option>
+        <option value="Singapore (SIN) - Changi"></option>
+        <option value="London (LHR) - Heathrow"></option>
+        <option value="Toronto (YYZ) - Pearson Intl"></option>
+      </datalist>
+
+      <div class="flight-grid">
+        <div class="field">
+          <label>From (City / Airport)</label>
+          <input type="text" id="fromCity" list="airportList" placeholder="Select or type city (e.g. Delhi)" />
+        </div>
+        <div class="field">
+          <label>To (City / Airport) <span onclick="swapCities()" style="color:var(--accent); cursor:pointer; float:right;">&#8644; Swap</span></label>
+          <input type="text" id="toCity" list="airportList" placeholder="Select or type city (e.g. Mumbai)" />
+        </div>
+        <div class="field">
+          <label>Departure Date</label>
+          <input type="date" id="depDate" />
+        </div>
+        <div class="field" id="retDateBox" style="opacity:0.5;">
+          <label>Return Date</label>
+          <input type="date" id="retDate" disabled />
+        </div>
+        <div class="field">
+          <label>Passengers &amp; Class</label>
+          <select id="paxClass">
+            <option>1 Adult (Economy)</option>
+            <option>2 Adults (Economy)</option>
+            <option>Family / Group (3+ Pax)</option>
+            <option>Student / Senior Citizen Fare</option>
+            <option>Business / First Class</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
+        <button onclick="sendFlightEnquiry()" class="btn btn-wa">&#128269; Get Lowest Fare on WhatsApp</button>
+        <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay &amp; Confirm Ticket Online</a>
+        <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Urgent Desk: +91 92551 00104</a>
+      </div>
+    </div>
+  </div>
+
     <div class="section-head"><div class="sub">STAY SOMEWHERE SPECIAL</div><h2>Featured Stays</h2><p>Choose a stay that makes the journey as memorable as the destination.</p></div>
     <div class="grid">
       <!-- Hotel 1: Kothi Paradise -->
