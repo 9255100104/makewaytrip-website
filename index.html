@@ -89,26 +89,64 @@
     <p style="margin-top:0.8rem; font-size:0.9rem;">Plan your next getaway &middot; Call <strong>+91 92551 00104</strong></p>
   </section>
 
-  <!-- Live Flight Booking Widget -->
+    <!-- Flight Booking Section -->
   <div class="container" id="flights">
     <div class="flight-box">
-      <div style="margin-bottom:1rem;">
-        <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Live Domestic &amp; International Flights</h2>
-        <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares in INR (&#8377;) &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
-      </div>
-     <script async src="https://tpemb.com" charset="utf-8"></script>
-
-      <div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid #e2e8f0; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center; justify-content:space-between;">
-        <span style="font-size:0.85rem; color:var(--muted);">Need Corporate / Group B2B Airfare or Manual Booking?</span>
-        <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
-          <a href="https://wa.me" target="_blank" class="btn btn-wa" style="padding:0.55rem 1rem; font-size:0.85rem;">WhatsApp B2B Desk</a>
-          <a href="https://rzp.io" target="_blank" class="btn btn-pay" style="padding:0.55rem 1rem; font-size:0.85rem;">&#128179; Pay Online</a>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
+        <div>
+          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Domestic &amp; International Flights</h2>
+          <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
         </div>
+      </div>
+
+      <datalist id="airportList">
+        <option value="Delhi (DEL)"></option>
+        <option value="Chandigarh (IXC)"></option>
+        <option value="Jaipur (JAI)"></option>
+        <option value="Mumbai (BOM)"></option>
+        <option value="Bengaluru (BLR)"></option>
+        <option value="Goa (GOI)"></option>
+        <option value="Hyderabad (HYD)"></option>
+        <option value="Kolkata (CCU)"></option>
+        <option value="Dubai (DXB)"></option>
+        <option value="Bangkok (BKK)"></option>
+        <option value="Singapore (SIN)"></option>
+        <option value="London (LHR)"></option>
+        <option value="Toronto (YYZ)"></option>
+      </datalist>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-top:1.2rem;">
+        <div class="field">
+          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">From (City / Airport)</label>
+          <input type="text" id="fromCity" list="airportList" placeholder="e.g. Delhi (DEL)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
+        </div>
+        <div class="field">
+          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">To (City / Airport)</label>
+          <input type="text" id="toCity" list="airportList" placeholder="e.g. Mumbai (BOM)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
+        </div>
+        <div class="field">
+          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Departure Date</label>
+          <input type="date" id="depDate" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
+        </div>
+        <div class="field">
+          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Passengers &amp; Class</label>
+          <select id="paxClass" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;">
+            <option>1 Adult (Economy)</option>
+            <option>2 Adults (Economy)</option>
+            <option>Family / Group (3+)</option>
+            <option>Business Class</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
+        <a href="https://aviasales.com" target="_blank" class="btn btn-accent">&#128269; Check Live Flight Rates &amp; Book</a>
+        <button onclick="sendFlightEnquiry()" class="btn btn-wa">WhatsApp B2B Desk</button>
+        <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay Online</a>
       </div>
     </div>
   </div>
 
-  <!-- Featured Stays -->
   <section class="container" id="stays">
     <div class="section-head"><div class="sub">STAY SOMEWHERE SPECIAL</div><h2>Featured Stays</h2><p>Choose a stay that makes the journey as memorable as the destination.</p></div>
     <div class="grid">
