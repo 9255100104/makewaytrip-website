@@ -1,330 +1,155 @@
-  <!-- Flight Booking Section (INR Support) -->
-  <div class="container" id="flights">
-    <div class="flight-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
-        <div>
-          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Domestic &amp; International Flights</h2>
-          <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares in INR (&#8377;) &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
-        </div>
-        <div style="display:flex; gap:1rem; background:#f1f5f9; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.9rem; font-weight:700; color:var(--primary);">
-          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-            <input type="radio" name="tripType" value="One-Way" checked onchange="toggleReturnDate()" /> One-Way
-          </label>
-          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-            <input type="radio" name="tripType" value="Round-Trip" onchange="toggleReturnDate()" /> Round-Trip
-          </label>
-        </div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makeway Trip Hisar | Flights, Stays &amp; Tour Packages</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #f97316;
+      --whatsapp: #25d366;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 1rem; }
+    .brand { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .brand span { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent); font-weight: 700; }
+    nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; font-weight: 600; font-size: 0.95rem; }
+    nav a:hover { color: var(--accent); }
+    .hero { background: linear-gradient(rgba(15, 23, 42, 0.48), rgba(15, 23, 42, 0.62)), url('hero-bg.jpg.jpg') center/cover no-repeat, #0f4c81; color: #fff; padding: 4.5rem 5%; text-align: center; }
+    .hero .tag { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #fed7aa; font-weight: 700; }
+    .hero h1 { font-size: 2.5rem; margin: 0.5rem 0 1rem; line-height: 1.2; }
+    .hero p { max-width: 650px; margin: 0 auto 1.5rem; color: #e2e8f0; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .btn { padding: 0.75rem 1.4rem; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; border: none; font-size: 0.95rem; }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-white { background: #fff; color: var(--primary); }
+    .btn-wa { background: var(--whatsapp); color: #fff; }
+    .btn-pay { background: #2563eb; color: #fff; }
+    .destinations-bar { font-size: 0.85rem; letter-spacing: 1.5px; color: #bae6fd; font-weight: 600; margin-top: 1rem; }
+    .container { max-width: 1150px; margin: 0 auto; padding: 3rem 5%; }
+    .section-head { text-align: center; margin-bottom: 2rem; }
+    .section-head .sub { color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; }
+    .section-head h2 { font-size: 1.9rem; color: var(--primary); margin: 0.3rem 0; }
+    .section-head p { color: var(--muted); }
+    .flight-box { background: #fff; padding: 2rem; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.07); margin-top: -2.5rem; position: relative; z-index: 10; }
+    .flight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 0.3rem; }
+    .field input, .field select { width: 100%; padding: 0.7rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; }
+    .grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; gap: 1.8rem !important; align-items: start !important; }
+    .card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block !important; height: auto !important; max-width: 420px; margin: 0 auto; width: 100%; }
+    .card > img { width: 100% !important; height: auto !important; object-fit: contain !important; background: #f8fafc !important; cursor: pointer; display: block; }
+    .card-body { padding: 1.4rem; display: block !important; height: auto !important; }
+    .loc { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+    .card h3 { font-size: 1.25rem; margin: 0.3rem 0 0.6rem; color: var(--primary); }
+    .card p { font-size: 0.92rem; color: var(--muted); margin-bottom: 1rem !important; flex: none !important; height: auto !important; }
+    .price { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 1rem; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .card-actions .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+    .gallery-box { margin-top: 1.2rem; padding-top: 0.9rem; border-top: 1px solid #e2e8f0; }
+    .gallery-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .thumbs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .thumbs img { width: 100% !important; height: 100px !important; object-fit: cover !important; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; background: #f1f5f9; display: block; }
+    .thumbs img:hover { border-color: var(--accent); transform: scale(1.03); }
+    footer { background: #0f172a; color: #cbd5e1; padding: 3rem 5% 2rem; text-align: center; }
+    footer h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
+    footer p { font-size: 0.9rem; margin: 0.4rem 0; }
+    .footer-links { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid #1e293b; font-size: 0.85rem; }
+    .footer-links a { color: #38bdf8; margin: 0 0.6rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="brand">MAKEWAY TRIP <span>FLIGHTS &middot; STAYS &middot; TOURS</span></a>
+    <nav>
+      <a href="#flights">Flights</a>
+      <a href="#stays">Stays</a>
+      <a href="#packages">Tour Packages</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      <datalist id="airportList">
-        <option value="Delhi (DEL)"></option>
-        <option value="Chandigarh (IXC)"></option>
-        <option value="Jaipur (JAI)"></option>
-        <option value="Mumbai (BOM)"></option>
-        <option value="Bengaluru (BLR)"></option>
-        <option value="Goa (GOI)"></option>
-        <option value="Hyderabad (HYD)"></option>
-        <option value="Kolkata (CCU)"></option>
-        <option value="Dubai (DXB)"></option>
-        <option value="Bangkok (BKK)"></option>
-        <option value="Singapore (SIN)"></option>
-        <option value="London (LHR)"></option>
-        <option value="Toronto (YYZ)"></option>
-      </datalist>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:1rem; margin-top:1.2rem;">
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">From (City / Airport)</label>
-          <input type="text" id="fromCity" list="airportList" placeholder="e.g. Delhi (DEL)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">To (City / Airport)</label>
-          <input type="text" id="toCity" list="airportList" placeholder="e.g. Mumbai (BOM)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Departure Date</label>
-          <input type="date" id="depDate" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field" id="retDateBox">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Return Date (Round-Trip)</label>
-          <input type="date" id="retDate" onchange="selectRoundTrip()" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Passengers &amp; Class</label>
-          <select id="paxClass" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;">
-            <option>1 Adult (Economy)</option>
-            <option>2 Adults (Economy)</option>
-            <option>Family / Group (3+)</option>
-            <option>Business Class</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
-        <a href="PASTE_YOUR_KIWI_LINK_HERE" target="_blank" class="btn btn-accent">&#128269; https://kiwitaxi.tpo.mx/dYedp3ym
-        <button onclick="sendFlightEnquiry()" class="btn btn-wa">WhatsApp B2B Desk</button>
-        <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay Online</a>
-      </div>
+  <section class="hero">
+    <div class="tag">YOUR JOURNEY, OUR WAY</div>
+    <h1>Find your next happy place.</h1>
+    <p>Discover handpicked stays, flight deals, and memorable trips across the mountains and spiritual destinations.</p>
+    <div class="hero-btns">
+      <a href="#stays" class="btn btn-white">Explore Stays</a>
+      <a href="#flights" class="btn btn-accent">&#9992;&#65039; Book Flights</a>
+      <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay Online</a>
+      <a href="https://wa.me" target="_blank" class="btn btn-wa">WhatsApp Us &rarr;</a>
     </div>
-  </div>
-
-    <div class="flight-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
-        <div>
-          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Domestic &amp; International Flights</h2>
-          <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
-        </div>
-      </div>
-
-      <datalist id="airportList">
-        <option value="Delhi (DEL)"></option>
-        <option value="Chandigarh (IXC)"></option>
-        <option value="Jaipur (JAI)"></option>
-        <option value="Mumbai (BOM)"></option>
-        <option value="Bengaluru (BLR)"></option>
-        <option value="Goa (GOI)"></option>
-        <option value="Hyderabad (HYD)"></option>
-        <option value="Kolkata (CCU)"></option>
-        <option value="Dubai (DXB)"></option>
-        <option value="Bangkok (BKK)"></option>
-        <option value="Singapore (SIN)"></option>
-        <option value="London (LHR)"></option>
-        <option value="Toronto (YYZ)"></option>
-      </datalist>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-top:1.2rem;">
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">From (City / Airport)</label>
-               <input type="text" id="fromCity" list="airportList" placeholder="e.g. Delhi (DEL)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">To (City / Airport)</label>
-          <input type="text" id="toCity" list="airportList" placeholder="e.g. Mumbai (BOM)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Departure Date</label>
-          <input type="date" id="depDate" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Passengers &amp; Class</label>
-          <select id="paxClass" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;">
-            <option>1 Adult (Economy)</option>
-            <option>2 Adults (Economy)</option>
-            <option>Family / Group (3+)</option>
-            <option>Business Class</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
-      <a href="https://aviasales.in" target="_blank" class="btn btn-accent">&#128269; Check Live Flight Rates &amp; Book</a>
-
-        <button onclick="sendFlightEnquiry()" class="btn btn-wa">WhatsApp B2B Desk</button>
-        <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay Online</a>
-      </div>
-    </div>
-  </div>  <!-- Flight Booking Section -->
-  <div class="container" id="flights">
-    <div class="flight-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
-        <div>
-          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Domestic &amp; International Flights</h2>
-          <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares in INR (&#8377;) &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
-        </div>
-        <div style="display:flex; gap:1rem; background:#f1f5f9; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.9rem; font-weight:700; color:var(--primary);">
-          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-            <input type="radio" name="tripType" value="One-Way" checked onchange="toggleReturnDate()" /> One-Way
-          </label>
-          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-            <input type="radio" name="tripType" value="Round-Trip" onchange="toggleReturnDate()" /> Round-Trip
-          </label>
-        </div>
-      </div>
-
-      <datalist id="airportList">
-        <option value="Delhi (DEL)"></option>
-        <option value="Chandigarh (IXC)"></option>
-        <option value="Jaipur (JAI)"></option>
-        <option value="Mumbai (BOM)"></option>
-        <option value="Bengaluru (BLR)"></option>
-        <option value="Goa (GOI)"></option>
-        <option value="Hyderabad (HYD)"></option>
-        <option value="Kolkata (CCU)"></option>
-        <option value="Dubai (DXB)"></option>
-        <option value="Bangkok (BKK)"></option>
-        <option value="Singapore (SIN)"></option>
-        <option value="London (LHR)"></option>
-        <option value="Toronto (YYZ)"></option>
-      </datalist>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:1rem; margin-top:1.2rem;">
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">From (City / Airport)</label>
-          <input type="text" id="fromCity" list="airportList" placeholder="e.g. Delhi (DEL)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">To (City / Airport)</label>
-          <input type="text" id="toCity" list="airportList" placeholder="e.g. Mumbai (BOM)" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Departure Date</label>
-          <input type="date" id="depDate" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field" id="retDateBox">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Return Date (Round-Trip)</label>
-          <input type="date" id="retDate" onchange="selectRoundTrip()" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;" />
-        </div>
-        <div class="field">
-          <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:0.3rem;">Passengers &amp; Class</label>
-          <select id="paxClass" style="width:100%; padding:0.7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:0.95rem;">
-            <option>1 Adult (Economy)</option>
-            <option>2 Adults (Economy)</option>
-            <option>Family / Group (3+)</option>
-            <option>Business Class</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
-        <a href="https://aviasales.com" target="_blank" class="btn btn-accent">&#128269; Check Live Flight Rates &amp; Book</a>
-        <button onclick="sendFlightEnquiry()" class="btn btn-wa">WhatsApp B2B Desk</button>
-        <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Pay Online</a>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Featured Stays -->
-  <section class="container" id="stays">
-    <div class="section-head"><div class="sub">STAY SOMEWHERE SPECIAL</div><h2>Featured Stays</h2><p>Choose a stay that makes the journey as memorable as the destination.</p></div>
-    <div class="grid">
-      <div class="card">
-        <img src="kothi-paradise.jpg" alt="Hotel Kothi Paradise Manali" />
-        <div class="card-body">
-          <div class="loc">MANALI &middot; ROHTANG ROAD</div>
-          <h3>Hotel Kothi Paradise</h3>
-          <p>Enjoy a comfortable mountain stay at Hotel Kothi Paradise, located on Rohtang Road, Manali. Beautiful mountain views, cozy rooms and a peaceful atmosphere.</p>
-          <div class="price">&#127873; Special Offer Price &middot; Unlock Surprise Deal on WhatsApp (Includes Breakfast &amp; Dinner)</div>
-          <div class="card-actions">
-            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Call</a>
-          </div>
-          <div class="gallery-box">
-            <div class="gallery-title">Room Gallery &amp; Menu (Tap photo to view big)</div>
-            <div class="thumbs">
-              <img src="ROOM PIC KHOTHI 1.jpeg" alt="Kothi 1" />
-              <img src="ROOM PIC KHOTHI 3.jpeg" alt="Kothi 2" />
-              <img src="ROOM PIC KHOTI.jpeg" alt="Kothi 3" />
-              <img src="ROOM PIC KHOTHI.jpeg" alt="Kothi Room 4" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="snow%20range%20new%20.jpg" alt="Hotel Snow Range Manali" />
-        <div class="card-body">
-          <div class="loc">MANALI &middot; BURWA VALLEY</div>
-          <h3>Hotel Snow Range</h3>
-          <p>A beautiful mountain stay in Burwa Valley, Manali, offering comfortable rooms, stunning snow-covered mountain views, and a peaceful atmosphere.</p>
-          <div class="price">&#8377;1,800 / Night</div>
-          <div class="card-actions">
-            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Call</a>
-          </div>
-          <div class="gallery-box">
-            <div class="gallery-title">Room Gallery (Tap photo to view big)</div>
-            <div class="thumbs">
-              <img src="snow-range-balcony-view.jpeg" alt="Snow Range 1" />
-              <img src="snow-range-balcony-2.jpeg" alt="Snow Range 2" />
-              <img src="snow-range-room.jpeg" alt="Snow Range 3" />
-              <img src="snow-range-room-2.jpeg" alt="Snow Range 4" />
-              <img src="snow-range-room-3.jpeg" alt="Snow Range 5" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="the-lost-escape-main.jpg" alt="The Lost Escape Jibhi" />
-        <div class="card-body">
-          <div class="loc">JIBHI &middot; VILLAGE DALICHA</div>
-          <h3>The Lost Escape</h3>
-          <p>Village Dalicha, Kotla Dhar, Jibhi. Surrounded by pine forests and mountain views. Stay only; meals not included.</p>
-          <div class="price">&#8377;2,800 / Night &middot; Stay Only</div>
-          <div class="card-actions">
-            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Call</a>
-          </div>
-          <div class="gallery-box">
-            <div class="gallery-title">Photo Gallery (Tap photo to view big)</div>
-            <div class="thumbs">
-              <img src="IMG-20261102-WA0001.jpg" alt="Jibhi 1" />
-              <img src="IMG-20261102-WA0003.jpg" alt="Jibhi 2" />
-              <img src="IMG-20261102-WA0004.jpg" alt="Jibhi 3" />
-              <img src="IMG-20261102-WA0006.jpg" alt="Jibhi 4" />
-              <img src="IMG-20261102-WA0007.jpg" alt="Jibhi 5" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="hotel-sanjivani-salasar.jpeg" alt="Hotel Sanjivani Salasar" />
-        <div class="card-body">
-          <div class="loc">SALASAR &middot; NEAR HANUMAN MANDIR</div>
-          <h3>Hotel Sanjivani</h3>
-          <p>Convenient and peaceful stay near Salasar Hanuman Mandir. Stay only; meals not included.</p>
-          <div class="price">&#8377;2,200 / Night &middot; Stay Only</div>
-          <div class="card-actions">
-            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+918571813076" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Salasar Desk</a>
-          </div>
-          <div class="gallery-box">
-            <div class="gallery-title">Room &amp; Property Gallery (Tap photo to view big)</div>
-            <div class="thumbs">
-              <img src="sanjivani-room.jpeg" alt="Sanjivani Room" />
-              <img src="Hotel Sanjivani Front gate view.jpeg" alt="Sanjivani Gate" />
-              <img src="sanjivani-park-view.jpeg" alt="Sanjivani Park" />
-              <img src="Hotel Sanjaivani lift.jpeg" alt="Sanjivani Lift" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="KIRSHANA APARTMENT - Copy.png" alt="Krishna Apartment Khatu Shyam Ji" />
-        <div class="card-body">
-          <div class="loc">KHATU SHYAM JI &middot; NEAR MANDIR</div>
-          <h3>Krishna Apartment</h3>
-          <p>Comfortable and clean accommodation for families and devotees visiting Khatu Shyam Ji Temple. Stay only.</p>
-          <div class="price">&#8377;1,000 / Night &middot; Stay Only</div>
-          <div class="card-actions">
-            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
-            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
-            <a href="tel:+919255100104" class="btn btn-white" style="border:1px solid #cbd5e1;">&#128222; Call</a>
-          </div>
-          <div class="gallery-box">
-            <div class="gallery-title">Property Gallery (Tap photo to view big)</div>
-            <div class="thumbs">
-              <img src="KIRSHANA APARTMENT - Copy.png" alt="Krishna View" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="destinations-bar">MANALI &middot; JIBHI &middot; SALASAR &middot; KHATU SHYAM JI</div>
+    <p style="margin-top:0.8rem; font-size:0.9rem;">Plan your next getaway &middot; Call <strong>+91 92551 00104</strong></p>
   </section>
 
-  <!-- Tour Packages -->
-  <section class="container" id="packages">
-    <div class="section-head"><div class="sub">CURATED HOLIDAYS</div><h2>Tour Packages &amp; Special Deals</h2><p>All-inclusive customizable packages for couples, families, and groups.</p></div>
-    <div class="grid">
-      <div class="card">
-        <img src="snow-range-view.jpeg" alt="Manali and Kasol Snow Escape" />
-        <div class="card-body">
-          <div class="loc">HIMACHAL &middot; 3 NIGHTS / 4 DAYS</div>
-          <h3>Manali &amp; Kasol Snow Escape</h3>
+  <div class="container" id="flights">
+    <div class="flight-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;">
+        <div>
+          <h2 style="color:var(--primary); font-size:1.4rem;">&#9992;&#65039; Search &amp; Book Domestic &amp; International Flights</h2>
+          <p style="color:var(--muted); font-size:0.9rem;">Compare Live Airline Fares in INR (&#8377;) &amp; Book Instantly | Makeway Trip B2B Desk: <strong>+91 92551 00104</strong></p>
+        </div>
+        <div style="display:flex; gap:1rem; background:#f1f5f9; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.9rem; font-weight:700; color:var(--primary);">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+            <input type="radio" name="tripType" value="One-Way" checked onchange="toggleReturnDate()" /> One-Way
+          </label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+            <input type="radio" name="tripType" value="Round-Trip" onchange="toggleReturnDate()" /> Round-Trip
+          </label>
+        </div>
+      </div>
+
+      <datalist id="airportList">
+        <option value="Delhi (DEL)"></option>
+        <option value="Chandigarh (IXC)"></option>
+        <option value="Jaipur (JAI)"></option>
+        <option value="Mumbai (BOM)"></option>
+        <option value="Bengaluru (BLR)"></option>
+        <option value="Goa (GOI)"></option>
+        <option value="Hyderabad (HYD)"></option>
+        <option value="Kolkata (CCU)"></option>
+        <option value="Dubai (DXB)"></option>
+        <option value="Bangkok (BKK)"></option>
+        <option value="Singapore (SIN)"></option>
+        <option value="London (LHR)"></option>
+        <option value="Toronto (YYZ)"></option>
+      </datalist>
+
+      <div class="flight-grid">
+        <div class="field">
+          <label>From (City / Airport)</label>
+          <input type="text" id="fromCity" list="airportList" placeholder="e.g. Delhi (DEL)" />
+        </div>
+        <div class="field">
+          <label>To (City / Airport)</label>
+          <input type="text" id="toCity" list="airportList" placeholder="e.g. Mumbai (BOM)" />
+        </div>
+        <div class="field">
+          <label>Departure Date</label>
+          <input type="date" id="depDate" />
+        </div>
+        <div class="field">
+          <label>Return Date (Round-Trip)</label>
+          <input type="date" id="retDate" onchange="selectRoundTrip()" />
+        </div>
+        <div class="field">
+          <label>Passengers &amp; Class</label>
+          <select id="paxClass">
+            <option>1 Adult (Economy)</option>
+            <option>2 Adults (Economy)</option>
+            <option>Family / Group (3+)</option>
+            <option>Business Class</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center;">
+        <a href="https://kiwi.com" target="_blank" class="btn btn-accent">&#128269; Check Live Flight Rates in INR (&#8377;)</a>
