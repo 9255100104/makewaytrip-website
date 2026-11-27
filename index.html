@@ -169,3 +169,49 @@
               <img src="ROOM PIC KHOTHI 1.jpeg" alt="Kothi 1" />
               <img src="ROOM PIC KHOTHI 3.jpeg" alt="Kothi 2" />
               <img src="ROOM PIC KHOTI.jpeg" alt="Kothi 3" />
+  <!-- Featured Stays -->
+  <section class="container" id="stays">
+    <!-- Featured Hotels (Hotel Kothi Paradise, Hotel Snow Range, The Lost Escape, Hotel Sanjivani, Krishna Apartment) -->
+    <!-- (पूरा कोड प्राप्त करने के लिए कृपया ओरिजिनल वेब सोर्स या फ़ाइल का उपयोग करें) -->
+  </section>
+
+  <section class="container" id="packages">
+    <!-- Tour Packages & Special Deals (Manali & Kasol Snow Escape, Salasar Balaji & Khatu Shyam Ji) -->
+  </section>
+
+  <section class="container">
+    <!-- Special Offers & Group Packages -->
+  </section>
+
+  <footer id="contact">
+    <h3>MAKEWAY TRIP</h3>
+    <p>Flights &middot; Stays &middot; Holiday Packages</p>
+    <p>&#128205; #363, New Jawahar Nagar, Raipur Road, Hisar, Haryana</p>
+    <p>&#128222; Call / WhatsApp: <a href="tel:+919255100104" style="color:#fff; font-weight:700;">+91 92551 00104</a> | Instagram: <a href="https://instagram.com" target="_blank" style="color:#38bdf8;">@makewaytrip.in</a></p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="refund-policy.html">Refund &amp; Cancellation Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+    <p style="margin-top:1rem; font-size:0.8rem; color:#64748b;">&copy; 2026 Makeway Trip. All Rights Reserved.</p>
+  </footer>
+  <script>
+    function sendFlightEnquiry() {
+      var from = document.getElementById('fromCity').value || 'Not specified';
+      var to = document.getElementById('toCity').value || 'Not specified';
+      var dep = document.getElementById('depDate').value || 'Flexible';
+      var pax = document.getElementById('paxClass').value;
+      var msg = "Hi Makeway Trip, I need Flight Ticket Fare:%0AFrom: " + from + "%0ATo: " + to + "%0ADeparture: " + dep + "%0APassengers: " + pax;
+      window.open("https://wa.me" + msg, "_blank");
+    }
+
+    document.querySelectorAll('.thumbs img').forEach(function(thumb) {
+      thumb.onclick = function() {
+        var card = this.closest('.card');
+        var mainImg = card.querySelector(':scope > img');
+        if (mainImg) { mainImg.src = this.src; }
+      };
+    });
+  </script>
+</body>
+</html>
