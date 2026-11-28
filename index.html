@@ -358,7 +358,159 @@
           </div>
         </div>
       </div>
+    </div>    </div>
+  </section>
+
+  <!-- Tour Packages -->
+  <section class="container" id="packages">
+    <div class="section-head"><div class="sub">CURATED HOLIDAYS</div><h2>Tour Packages &amp; Special Deals</h2><p>All-inclusive customizable packages for couples, families, and groups.</p></div>
+    <div class="grid">
+      <div class="card">
+        <img src="snow-range-view.jpeg" alt="Manali and Kasol Snow Escape" />
+        <div class="card-body">
+          <div class="loc">HIMACHAL &middot; 3 NIGHTS / 4 DAYS</div>
+          <h3>Manali &amp; Kasol Snow Escape</h3>
+          <p>Hisar se Comfortable Round-Trip Travel + Scenic Hotel Stay, Daily Breakfast &amp; Dinner, Solang Valley, Atal Tunnel, Kasol, Hadimba Temple, Nehru Kund &amp; Local Sightseeing.</p>
+          <div class="price">Only &#8377;4,999/- Per Person</div>
+          <div class="card-actions">
+            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Hotel Sanjivani Salasar.png" alt="Salasar Balaji and Khatu Shyam Ji Yatra" />
+        <div class="card-body">
+          <div class="loc">SPIRITUAL YATRA &middot; GROUP &amp; FAMILY</div>
+          <h3>Salasar Balaji &amp; Khatu Shyam Ji</h3>
+          <p>Customized family, corporate, and group darshan tours from Hisar, Delhi, and Haryana with comfortable stay and private cab/tempo traveller.</p>
+          <div class="price">Group &amp; Custom Quotes</div>
+          <div class="card-actions">
+            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book &amp; Pay Online</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Special Offers -->
+  <section class="container">
+    <div class="section-head"><div class="sub">LIMITED TIME DEALS</div><h2>Special Offers &amp; Group Packages</h2><p>Book directly via WhatsApp or Online Payment for exclusive Hisar &amp; Haryana discounts.</p></div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-body">
+          <div class="loc">&#10052;&#65039; WINTER &amp; NEW YEAR SPECIAL</div>
+          <h3>Hisar to Manali &amp; Kasol (3N/4D)</h3>
+          <p>Round-Trip Travel from Hisar, Mountain Hotel Stay, Daily Breakfast &amp; Dinner, Solang Valley, Atal Tunnel, Kasol, Hadimba Temple &amp; Nehru Kund.</p>
+          <div class="price">Only &#8377;4,999/- Per Person &middot; Group Discount</div>
+          <div class="card-actions">
+            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book Now</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp Offer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="loc">&#9992;&#65039; B2B &amp; CORPORATE AIRFARES</div>
+          <h3>Best Price Flight Ticket Deals</h3>
+          <p>Get instant PNR confirmation and special corporate/group discounts on all Domestic &amp; International flights. Share your route on WhatsApp for lowest fares.</p>
+          <div class="price">Zero Hidden Charges &middot; Instant Ticket</div>
+          <div class="card-actions">
+            <a href="#flights" class="btn btn-accent">&#128269; Check Route</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">Get Fare on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="loc">&#128681; SPIRITUAL YATRA SPECIAL</div>
+          <h3>Khatu Shyam Ji &amp; Salasar Darshan</h3>
+          <p>Clean rooms near Mandir (Krishna Apartment from &#8377;1,000/night &amp; Hotel Sanjivani from &#8377;2,200/night). Private Cab &amp; Tempo Traveller available from Hisar.</p>
+          <div class="price">Starting &#8377;1,000 / Night &middot; Family &amp; Group</div>
+          <div class="card-actions">
+            <a href="https://rzp.io" target="_blank" class="btn btn-pay">&#128179; Book Stay</a>
+            <a href="https://wa.me." target="_blank" class="btn btn-wa">WhatsApp Desk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h3>MAKEWAY TRIP</h3>
+    <p>Flights &middot; Stays &middot; Holiday Packages</p>
+    <p>&#128205; #363, New Jawahar Nagar, Raipur Road, Hisar, Haryana</p>
+    <p>&#128222; Call / WhatsApp: <a href="tel:+919255100104" style="color:#fff; font-weight:700;">+91 92551 00104</a> | Instagram: <a href="https://instagram.com" target="_blank" style="color:#38bdf8;">@makewaytrip.in</a></p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="refund-policy.html">Refund &amp; Cancellation Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+    <p style="margin-top:1rem; font-size:0.8rem; color:#64748b;">&copy; 2026 Makeway Trip. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleReturnDate() {
+      var isRound = document.querySelector('input[name="tripType"]:checked').value === 'Round-Trip';
+      if (!isRound) { document.getElementById('retDate').value = ''; }
+    }
+    function selectRoundTrip() {
+      if (document.getElementById('retDate').value) {
+        document.querySelector('input[name="tripType"][value="Round-Trip"]').checked = true;
+      }
+    }
+    function openFlightModal() {
+      var trip = document.querySelector('input[name="tripType"]:checked').value;
+      var from = document.getElementById('fromCity').value || 'Not selected';
+      var to = document.getElementById('toCity').value || 'Not selected';
+      var dep = document.getElementById('depDate').value || 'Flexible';
+      var ret = document.getElementById('retDate').value || 'N/A';
+      var pax = document.getElementById('paxClass').value;
+      document.getElementById('summaryText').innerHTML = "<strong>Route:</strong> " + from + " &rarr; " + to + " (" + trip + ")<br><strong>Date:</strong> " + dep + (trip === 'Round-Trip' ? " | <strong>Return:</strong> " + ret : "") + "<br><strong>Passengers:</strong> " + pax;
+      document.getElementById('flightModal').style.display = 'flex';
+    }
+    function closeFlightModal() {
+      document.getElementById('flightModal').style.display = 'none';
+    }
+    function confirmDirectBooking() {
+      var name = document.getElementById('custName').value || 'Guest';
+      var phone = document.getElementById('custPhone').value || 'Not provided';
+      var email = document.getElementById('custEmail').value || 'Not provided';
+      var trip = document.querySelector('input[name="tripType"]:checked').value;
+      var from = document.getElementById('fromCity').value || 'Not selected';
+      var to = document.getElementById('toCity').value || 'Not selected';
+      var dep = document.getElementById('depDate').value || 'Flexible';
+      var ret = document.getElementById('retDate').value || 'N/A';
+      var pax = document.getElementById('paxClass').value;
+      var msg = "New Direct Flight Booking Request:%0AName: " + name + "%0APhone: " + phone + "%0AEmail: " + email + "%0ATrip: " + trip + "%0AFrom: " + from + "%0ATo: " + to + "%0ADeparture: " + dep + (trip === 'Round-Trip' ? "%0AReturn: " + ret : "") + "%0APax: " + pax;
+      window.open("https://wa.me" + msg, "_blank");
+      closeFlightModal();
+    }
+    function sendFlightEnquiry() {
+      var trip = document.querySelector('input[name="tripType"]:checked').value;
+      var from = document.getElementById('fromCity').value || 'Not specified';
+      var to = document.getElementById('toCity').value || 'Not specified';
+      var dep = document.getElementById('depDate').value || 'Flexible';
+      var ret = document.getElementById('retDate').value || 'N/A';
+      var pax = document.getElementById('paxClass').value;
+      var msg = "Hi Makeway Trip, I need B2B Flight Ticket Fare:%0ATrip Type: " + trip + "%0AFrom: " + from + "%0ATo: " + to + "%0ADeparture: " + dep + (trip === 'Round-Trip' ? "%0AReturn: " + ret : "") + "%0APassengers: " + pax;
+      window.open("https://wa.me" + msg, "_blank");
+    }
+    document.querySelectorAll('.thumbs img').forEach(function(thumb) {
+      thumb.onclick = function() {
+        var card = this.closest('.card');
+        var mainImg = card.querySelector(':scope > img');
+        if (mainImg) { mainImg.src = this.src; }
+      };
+    });
+  </script>
+</body>
+</html>
+
   </section>  <!-- Tour Packages -->
   <section class="container" id="packages">
     <div class="section-head"><div class="sub">CURATED HOLIDAYS</div><h2>Tour Packages &amp; Special Deals</h2><p>All-inclusive customizable packages for couples, families, and groups.</p></div>
